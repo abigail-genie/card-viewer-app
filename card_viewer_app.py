@@ -217,121 +217,132 @@ def render_card(card, index):
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Stats variations
-        if stats:
+        if stats and any(stat.get('label') or stat.get('value') for stat in stats):
             st.markdown('<div class="section-box">', unsafe_allow_html=True)
             for stat in stats:
-                cols = st.columns([2, 1, 2])
-                with cols[0]:
-                    st.markdown(f"**{stat.get('label', '')}**")
-                with cols[1]:
-                    st.markdown(f"<div style='font-size: 1.2em; font-weight: bold;'>{stat.get('value', '')}</div>", unsafe_allow_html=True)
-                with cols[2]:
-                    context = stat.get('context', '')
-                    visual = stat.get('visual', '')
-                    caption_text = f"{context} {visual}".strip()
-                    if caption_text:
-                        st.caption(caption_text)
+                if stat.get('label') or stat.get('value'):
+                    cols = st.columns([2, 1, 2])
+                    with cols[0]:
+                        st.markdown(f"**{stat.get('label', '')}**")
+                    with cols[1]:
+                        st.markdown(f"<div style='font-size: 1.2em; font-weight: bold;'>{stat.get('value', '')}</div>", unsafe_allow_html=True)
+                    with cols[2]:
+                        context = stat.get('context', '')
+                        visual = stat.get('visual', '')
+                        caption_text = f"{context} {visual}".strip()
+                        if caption_text:
+                            st.caption(caption_text)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Primary & Supporting stats
-        if primary_stat or supporting_stat:
+        has_primary = primary_stat and (primary_stat.get('label') or primary_stat.get('value'))
+        has_supporting = supporting_stat and (supporting_stat.get('label') or supporting_stat.get('value'))
+        if has_primary or has_supporting:
             st.markdown('<div class="section-box">', unsafe_allow_html=True)
-            if primary_stat:
+            if has_primary:
                 st.markdown(f"**{primary_stat.get('label', '')}:** {primary_stat.get('value', '')}")
                 if primary_stat.get('context'):
                     st.caption(primary_stat['context'])
-            if supporting_stat:
+            if has_supporting:
                 st.markdown(f"**{supporting_stat.get('label', '')}:** {supporting_stat.get('value', '')}")
                 if supporting_stat.get('context'):
                     st.caption(supporting_stat['context'])
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Supporting data
-        if supporting_data:
+        if supporting_data and any(data.get('label') or data.get('value') for data in supporting_data):
             st.markdown('<div class="section-box">', unsafe_allow_html=True)
             for data in supporting_data:
-                st.markdown(f"**{data.get('label', '')}:** {data.get('value', '')}")
-                if data.get('context'):
-                    st.caption(data['context'])
+                if data.get('label') or data.get('value'):
+                    st.markdown(f"**{data.get('label', '')}:** {data.get('value', '')}")
+                    if data.get('context'):
+                        st.caption(data['context'])
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Dashboard metrics (rich format)
-        if dashboard_metrics:
+        if dashboard_metrics and any(metric.get('metric_name') or metric.get('current') for metric in dashboard_metrics):
             st.markdown('<div class="section-box">', unsafe_allow_html=True)
             st.markdown("**Health Metrics Dashboard**")
             for metric in dashboard_metrics:
-                cols = st.columns([3, 1, 1, 1, 1])
-                with cols[0]:
-                    st.markdown(f"**{metric.get('metric_name', '')}**")
-                with cols[1]:
-                    st.metric("Baseline", metric.get('baseline', ''))
-                with cols[2]:
-                    st.metric("Current", metric.get('current', ''))
-                with cols[3]:
-                    change = metric.get('change', '')
-                    st.metric("Change", change)
-                with cols[4]:
-                    percent = metric.get('percent_change', '')
-                    trend = metric.get('trend_arrow', '')
-                    caption_text = f"{percent} {trend}".strip()
-                    if caption_text:
-                        st.caption(caption_text)
+                if metric.get('metric_name') or metric.get('current'):
+                    cols = st.columns([3, 1, 1, 1, 1])
+                    with cols[0]:
+                        st.markdown(f"**{metric.get('metric_name', '')}**")
+                    with cols[1]:
+                        st.metric("Baseline", metric.get('baseline', ''))
+                    with cols[2]:
+                        st.metric("Current", metric.get('current', ''))
+                    with cols[3]:
+                        change = metric.get('change', '')
+                        st.metric("Change", change)
+                    with cols[4]:
+                        percent = metric.get('percent_change', '')
+                        trend = metric.get('trend_arrow', '')
+                        caption_text = f"{percent} {trend}".strip()
+                        if caption_text:
+                            st.caption(caption_text)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Visual elements note
-        if visual_elements:
-            if isinstance(visual_elements, dict):
-                chart_type = visual_elements.get('chart_type', '')
-                data_points = visual_elements.get('data_points', [])
-                if chart_type:
-                    st.markdown(f'<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0; background: #fafafa;">📊 Chart: {chart_type}</div>', unsafe_allow_html=True)
-                    if data_points:
-                        for dp in data_points:
+        if visual_elements and isinstance(visual_elements, dict):
+            chart_type = visual_elements.get('chart_type', '')
+            data_points = visual_elements.get('data_points', [])
+            if chart_type:
+                st.markdown(f'<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0; background: #fafafa;">📊 Chart: {chart_type}</div>', unsafe_allow_html=True)
+                if data_points:
+                    for dp in data_points:
+                        if dp.get('label') or dp.get('value'):
                             st.caption(f"{dp.get('label', '')}: {dp.get('value', '')}")
 
         # Accordion items
         if accordion_items:
             for item in accordion_items:
-                with st.expander(item.get('question', '')):
-                    st.markdown(item.get('answer', ''))
+                if item.get('question') or item.get('answer'):
+                    with st.expander(item.get('question', '')):
+                        st.markdown(item.get('answer', ''))
 
         # Summary sections
         if summary_sections:
             for section in summary_sections:
-                st.markdown(f"### {section.get('title', '')}")
-                metrics = section.get('metrics', [])
-                if metrics:
-                    for metric in metrics:
-                        cols = st.columns([2, 1, 1, 1])
-                        with cols[0]:
-                            st.markdown(f"**{metric.get('label', '')}**")
-                        if 'baseline' in metric:
-                            with cols[1]:
-                                st.metric("Baseline", metric['baseline'])
-                        with cols[2]:
-                            st.metric("Current", metric.get('value', ''))
-                        if 'change' in metric:
-                            with cols[3]:
-                                st.metric("Change", metric['change'])
-                        if 'detail' in metric:
-                            st.caption(metric['detail'])
+                if section.get('title') or section.get('metrics'):
+                    st.markdown(f"### {section.get('title', '')}")
+                    metrics = section.get('metrics', [])
+                    if metrics:
+                        for metric in metrics:
+                            if metric.get('label') or metric.get('value'):
+                                cols = st.columns([2, 1, 1, 1])
+                                with cols[0]:
+                                    st.markdown(f"**{metric.get('label', '')}**")
+                                if 'baseline' in metric and metric['baseline']:
+                                    with cols[1]:
+                                        st.metric("Baseline", metric['baseline'])
+                                with cols[2]:
+                                    st.metric("Current", metric.get('value', ''))
+                                if 'change' in metric and metric['change']:
+                                    with cols[3]:
+                                        st.metric("Change", metric['change'])
+                                if metric.get('detail'):
+                                    st.caption(metric['detail'])
 
         # Key takeaways
-        if key_takeaways:
+        if key_takeaways and any(takeaway for takeaway in key_takeaways if takeaway):
             st.markdown("**Key Takeaways:**")
             for takeaway in key_takeaways:
-                st.markdown(f"- {takeaway}")
+                if takeaway:
+                    st.markdown(f"- {takeaway}")
 
         # Stats container
-        if stats_array:
+        if stats_array and any(stat.get('value') or stat.get('label') for stat in stats_array):
             st.markdown('<div class="stats-container">', unsafe_allow_html=True)
-            if stats_container and isinstance(stats_container, dict) and 'title' in stats_container:
+            if stats_container and isinstance(stats_container, dict) and stats_container.get('title'):
                 st.markdown(f"**{stats_container['title']}**")
 
-            cols = st.columns(len(stats_array))
-            for idx, stat in enumerate(stats_array):
-                with cols[idx]:
-                    st.markdown(f'<div class="stat-item"><div class="stat-value">{stat.get("value", "")}</div><div class="stat-label">{stat.get("label", "")}</div></div>', unsafe_allow_html=True)
+            valid_stats = [stat for stat in stats_array if stat.get('value') or stat.get('label')]
+            if valid_stats:
+                cols = st.columns(len(valid_stats))
+                for idx, stat in enumerate(valid_stats):
+                    with cols[idx]:
+                        st.markdown(f'<div class="stat-item"><div class="stat-value">{stat.get("value", "")}</div><div class="stat-label">{stat.get("label", "")}</div></div>', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Interactive element
@@ -349,7 +360,9 @@ def render_card(card, index):
 
         # Helper text
         if helper_text or context_label:
-            st.caption(f"{helper_text} {context_label}")
+            caption_text = f"{helper_text} {context_label}".strip()
+            if caption_text:
+                st.caption(caption_text)
 
         if source_label:
             st.caption(f"Source: {source_label}")
