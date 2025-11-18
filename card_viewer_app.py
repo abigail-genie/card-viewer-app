@@ -243,9 +243,11 @@ def render_card(card, index):
 
         # Answer choices (for action_prompt cards)
         if answer_choices:
+            st.write(f"DEBUG: Found {len(answer_choices)} answer choices")  # DEBUG
             choices_html = '<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0;">'
             for choice in answer_choices:
                 choice_label = choice if isinstance(choice, str) else choice.get('label', '')
+                st.write(f"DEBUG: Choice label: {choice_label}")  # DEBUG
                 choices_html += f'<div style="padding: 8px; border: 1px solid #ccc; margin: 8px 0; cursor: pointer;">☐ {choice_label}</div>'
             choices_html += '</div>'
             st.markdown(choices_html, unsafe_allow_html=True)
@@ -381,6 +383,8 @@ def render_card(card, index):
                    (f" - Select up to {interactive.get('max_selections', '')}" if 'max_selections' in interactive else ''))
 
         # CTAs
+        st.write(f"DEBUG: primary_action = '{primary_action}'")  # DEBUG
+        st.write(f"DEBUG: secondary_action = '{secondary_action}'")  # DEBUG
         if primary_action:
             st.markdown(f'<div class="card-cta">{primary_action}</div>', unsafe_allow_html=True)
 
