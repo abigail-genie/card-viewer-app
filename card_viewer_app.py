@@ -9,11 +9,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS - Simple and minimal
+# Custom CSS - Dark mode compatible
 st.markdown("""
 <style>
     .card {
-        border: 1px solid #ddd;
+        border: 1px solid var(--text-color);
         padding: 20px;
         margin-bottom: 20px;
         border-radius: 4px;
@@ -21,46 +21,52 @@ st.markdown("""
     .card-type-badge {
         display: inline-block;
         padding: 4px 8px;
-        border: 1px solid #666;
+        border: 1px solid var(--text-color);
         font-size: 0.75em;
         font-weight: 600;
         text-transform: uppercase;
         margin-bottom: 12px;
+        color: var(--text-color);
     }
     .card-title {
         font-size: 1.3em;
         font-weight: 700;
         margin-bottom: 12px;
         margin-top: 8px;
+        color: var(--text-color);
     }
     .card-body {
         line-height: 1.6;
         margin-bottom: 16px;
+        color: var(--text-color);
     }
     .metadata-tag {
         display: inline-block;
         padding: 4px 8px;
-        border: 1px solid #999;
+        border: 1px solid var(--text-color);
         font-size: 0.75em;
         margin-right: 8px;
         margin-bottom: 8px;
+        color: var(--text-color);
     }
     .card-cta {
-        border: 2px solid #333;
+        border: 2px solid var(--text-color);
         padding: 10px 16px;
         text-align: center;
         font-weight: 600;
         margin-bottom: 12px;
+        color: var(--text-color);
     }
     .card-rationale {
-        border-left: 3px solid #999;
+        border-left: 3px solid var(--text-color);
         padding: 12px;
         font-size: 0.85em;
         margin-top: 12px;
-        background: #fafafa;
+        background: var(--background-color);
+        opacity: 0.9;
     }
     .stats-container {
-        border: 1px solid #ddd;
+        border: 1px solid var(--text-color);
         padding: 16px;
         margin: 16px 0;
     }
@@ -71,15 +77,24 @@ st.markdown("""
     .stat-value {
         font-size: 1.5em;
         font-weight: bold;
+        color: var(--text-color);
     }
     .stat-label {
         font-size: 0.8em;
         margin-top: 4px;
+        color: var(--text-color);
     }
     .section-box {
-        border: 1px solid #ddd;
+        border: 1px solid var(--text-color);
         padding: 12px;
         margin: 12px 0;
+    }
+    .share-message {
+        border: 1px solid var(--text-color);
+        padding: 12px;
+        background: var(--secondary-background-color);
+        font-style: italic;
+        border-radius: 4px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -610,7 +625,7 @@ def render_card(card, index):
             pre_filled = share_content.get('pre_filled_message', '')
             if pre_filled:
                 st.markdown("**Shareable Message:**")
-                st.markdown(f'<div style="border: 1px solid #ddd; padding: 12px; background: #f9f9f9; font-style: italic;">{pre_filled}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="share-message">{pre_filled}</div>', unsafe_allow_html=True)
 
             visual_asset = share_content.get('visual_asset', {})
             if visual_asset and visual_asset.get('type'):
@@ -774,62 +789,67 @@ def render_card(card, index):
                     else:
                         st.markdown(f"{value}")
 
+        # FULL CONTENT JSON - for debugging
+        with st.expander("📄 FULL CARD CONTENT (JSON)", expanded=False):
+            st.markdown("*Complete card content structure:*")
+            st.json(content)
+
+        # FULL CARD JSON - everything including metadata
+        with st.expander("🗂️ COMPLETE CARD DATA (JSON)", expanded=False):
+            st.markdown("*Complete card data including all metadata:*")
+            st.json(card)
+
         # METADATA - COLLAPSIBLE
         with st.expander("📋 METADATA", expanded=False):
-            # Build metadata HTML
-            metadata_html = '<div style="border: 2px solid #666; padding: 20px; background: #fafafa;">'
-
             # Card identification
             if card.get('card_id'):
-                metadata_html += f"<p><strong>Card ID:</strong> {card['card_id']}</p>"
+                st.markdown(f"**Card ID:** {card['card_id']}")
 
             # Card type info
-            metadata_html += f"<p><strong>Card Type:</strong> {card_type}</p>"
+            st.markdown(f"**Card Type:** {card_type}")
             if card.get('subtype'):
-                metadata_html += f"<p><strong>Subtype:</strong> {card['subtype']}</p>"
+                st.markdown(f"**Subtype:** {card['subtype']}")
             if card.get('variant'):
-                metadata_html += f"<p><strong>Variant:</strong> {card['variant']}</p>"
+                st.markdown(f"**Variant:** {card['variant']}")
 
             # Personalization
-            metadata_html += f"<p><strong>Motivation Variant:</strong> {motivation_class}</p>"
-            metadata_html += f"<p><strong>Medical vs Lifestyle:</strong> {category_class.replace('_', ' ')}</p>"
+            st.markdown(f"**Motivation Variant:** {motivation_class}")
+            st.markdown(f"**Medical vs Lifestyle:** {category_class.replace('_', ' ')}")
             if complexity:
-                metadata_html += f"<p><strong>Persona Complexity:</strong> {complexity}</p>"
+                st.markdown(f"**Persona Complexity:** {complexity}")
 
             # Milestone
             if card.get('milestone'):
-                metadata_html += f"<p><strong>Milestone:</strong> {card['milestone']}</p>"
+                st.markdown(f"**Milestone:** {card['milestone']}")
 
             # Metadata details
             metadata = card.get('metadata', {})
             if metadata:
-                metadata_html += "<hr><p><strong>Detailed Metadata:</strong></p>"
+                st.markdown("---")
+                st.markdown("**Detailed Metadata:**")
 
                 if metadata.get('rationale'):
-                    metadata_html += f"<p><strong>Rationale:</strong> {metadata['rationale']}</p>"
+                    st.markdown(f"**Rationale:** {metadata['rationale']}")
 
                 if metadata.get('scheduler_priority'):
-                    metadata_html += f"<p><strong>Scheduler Priority:</strong> {metadata['scheduler_priority']}</p>"
+                    st.markdown(f"**Scheduler Priority:** {metadata['scheduler_priority']}")
 
                 if metadata.get('mock_engagement'):
-                    metadata_html += f"<p><strong>Mock Engagement:</strong> {metadata['mock_engagement']}</p>"
+                    st.markdown(f"**Mock Engagement:** {metadata['mock_engagement']}")
 
                 if metadata.get('curiosity_hook'):
-                    metadata_html += f"<p><strong>Curiosity Hook:</strong> {metadata['curiosity_hook']}</p>"
+                    st.markdown(f"**Curiosity Hook:** {metadata['curiosity_hook']}")
 
                 if metadata.get('data_sources_used'):
-                    metadata_html += f"<p><strong>Data Sources Used:</strong> {metadata['data_sources_used']}</p>"
+                    st.markdown(f"**Data Sources Used:** {metadata['data_sources_used']}")
 
                 if metadata.get('dyk_source'):
-                    metadata_html += f"<p><strong>DYK Source:</strong> {metadata['dyk_source']}</p>"
+                    st.markdown(f"**DYK Source:** {metadata['dyk_source']}")
 
                 # Show any other metadata fields
                 for key, value in metadata.items():
                     if key not in ['rationale', 'scheduler_priority', 'mock_engagement', 'curiosity_hook', 'data_sources_used', 'dyk_source']:
-                        metadata_html += f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
-
-            metadata_html += '</div>'
-            st.markdown(metadata_html, unsafe_allow_html=True)
+                        st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
 
         # Add spacing between cards
         st.markdown("---")
