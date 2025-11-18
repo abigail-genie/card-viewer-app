@@ -176,8 +176,8 @@ def render_card(card, index):
     with st.container():
         # CONTENT BOX
         st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown('<div style="border: 2px solid #333; padding: 20px; margin-bottom: 16px;">', unsafe_allow_html=True)
-        st.markdown('<div style="font-weight: 600; margin-bottom: 12px; color: #666;">CARD CONTENT</div>', unsafe_allow_html=True)
+        st.markdown('<div style="border: 3px solid #333; padding: 24px; margin-bottom: 16px; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">', unsafe_allow_html=True)
+        st.markdown('<div style="font-weight: 700; margin-bottom: 16px; color: #333; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #333; padding-bottom: 8px;">📄 Card Information</div>', unsafe_allow_html=True)
 
         # Card type badge
         st.markdown(f'<div class="card-type-badge">{card_type.replace("_", " ")}</div>', unsafe_allow_html=True)
@@ -353,62 +353,62 @@ def render_card(card, index):
         # Close content box
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # METADATA BOX
-        st.markdown('<div style="border: 2px solid #666; padding: 20px; background: #fafafa;">', unsafe_allow_html=True)
-        st.markdown('<div style="font-weight: 600; margin-bottom: 12px; color: #666;">METADATA</div>', unsafe_allow_html=True)
+        # METADATA - COLLAPSIBLE
+        with st.expander("📋 METADATA", expanded=False):
+            st.markdown('<div style="border: 2px solid #666; padding: 20px; background: #fafafa;">', unsafe_allow_html=True)
 
-        # Card identification
-        if card.get('card_id'):
-            st.markdown(f"**Card ID:** {card['card_id']}")
+            # Card identification
+            if card.get('card_id'):
+                st.markdown(f"**Card ID:** {card['card_id']}")
 
-        # Card type info
-        st.markdown(f"**Card Type:** {card_type}")
-        if card.get('subtype'):
-            st.markdown(f"**Subtype:** {card['subtype']}")
-        if card.get('variant'):
-            st.markdown(f"**Variant:** {card['variant']}")
+            # Card type info
+            st.markdown(f"**Card Type:** {card_type}")
+            if card.get('subtype'):
+                st.markdown(f"**Subtype:** {card['subtype']}")
+            if card.get('variant'):
+                st.markdown(f"**Variant:** {card['variant']}")
 
-        # Personalization
-        st.markdown(f"**Motivation Variant:** {motivation_class}")
-        st.markdown(f"**Medical vs Lifestyle:** {category_class.replace('_', ' ')}")
-        if complexity:
-            st.markdown(f"**Persona Complexity:** {complexity}")
+            # Personalization
+            st.markdown(f"**Motivation Variant:** {motivation_class}")
+            st.markdown(f"**Medical vs Lifestyle:** {category_class.replace('_', ' ')}")
+            if complexity:
+                st.markdown(f"**Persona Complexity:** {complexity}")
 
-        # Milestone
-        if card.get('milestone'):
-            st.markdown(f"**Milestone:** {card['milestone']}")
+            # Milestone
+            if card.get('milestone'):
+                st.markdown(f"**Milestone:** {card['milestone']}")
 
-        # Metadata details
-        metadata = card.get('metadata', {})
-        if metadata:
-            st.markdown("---")
-            st.markdown("**Detailed Metadata:**")
+            # Metadata details
+            metadata = card.get('metadata', {})
+            if metadata:
+                st.markdown("---")
+                st.markdown("**Detailed Metadata:**")
 
-            if metadata.get('rationale'):
-                st.markdown(f"**Rationale:** {metadata['rationale']}")
+                if metadata.get('rationale'):
+                    st.markdown(f"**Rationale:** {metadata['rationale']}")
 
-            if metadata.get('scheduler_priority'):
-                st.markdown(f"**Scheduler Priority:** {metadata['scheduler_priority']}")
+                if metadata.get('scheduler_priority'):
+                    st.markdown(f"**Scheduler Priority:** {metadata['scheduler_priority']}")
 
-            if metadata.get('mock_engagement'):
-                st.markdown(f"**Mock Engagement:** {metadata['mock_engagement']}")
+                if metadata.get('mock_engagement'):
+                    st.markdown(f"**Mock Engagement:** {metadata['mock_engagement']}")
 
-            if metadata.get('curiosity_hook'):
-                st.markdown(f"**Curiosity Hook:** {metadata['curiosity_hook']}")
+                if metadata.get('curiosity_hook'):
+                    st.markdown(f"**Curiosity Hook:** {metadata['curiosity_hook']}")
 
-            if metadata.get('data_sources_used'):
-                st.markdown(f"**Data Sources Used:** {metadata['data_sources_used']}")
+                if metadata.get('data_sources_used'):
+                    st.markdown(f"**Data Sources Used:** {metadata['data_sources_used']}")
 
-            if metadata.get('dyk_source'):
-                st.markdown(f"**DYK Source:** {metadata['dyk_source']}")
+                if metadata.get('dyk_source'):
+                    st.markdown(f"**DYK Source:** {metadata['dyk_source']}")
 
-            # Show any other metadata fields
-            for key, value in metadata.items():
-                if key not in ['rationale', 'scheduler_priority', 'mock_engagement', 'curiosity_hook', 'data_sources_used', 'dyk_source']:
-                    st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
+                # Show any other metadata fields
+                for key, value in metadata.items():
+                    if key not in ['rationale', 'scheduler_priority', 'mock_engagement', 'curiosity_hook', 'data_sources_used', 'dyk_source']:
+                        st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
 
-        # Close metadata box
-        st.markdown('</div>', unsafe_allow_html=True)
+            # Close metadata box
+            st.markdown('</div>', unsafe_allow_html=True)
 
         # Close card
         st.markdown('</div>', unsafe_allow_html=True)
