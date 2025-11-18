@@ -1,0 +1,361 @@
+{
+  "user_context": {
+    "user_id": "001",
+    "day_number": 14,
+    "scheduler_phase": "Confirmed",
+    "current_milestone": "m1",
+    "motivation_hypothesis": "fear_based",
+    "motivation_confidence": "65%",
+    "persona_hypothesis": "time_poor_achiever",
+    "persona_confidence": "70%"
+  },
+  "generated_cards": [
+    {
+      "card_id": "card_day14_001",
+      "card_type": "rich_format",
+      "subtype": "progress_tracker",
+      "variant": "milestone_celebration",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m1",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "2 Weeks In: Your Energy Patterns Are Finally Visible",
+        "body": "You've tracked 14 full days with your Apple Watch. That's 336 hours of data revealing what's really affecting your energy. Your morning walks? 71% adherence. That's not just numbers—it's proof you can build habits that stick.",
+        "stats": [
+          {
+            "label": "Days tracked",
+            "value": "14",
+            "unit": "days",
+            "context": "Complete data set"
+          },
+          {
+            "label": "Morning walks",
+            "value": "5/7",
+            "unit": "this week",
+            "context": "71% adherence"
+          },
+          {
+            "label": "Patterns discovered",
+            "value": "3",
+            "unit": "insights",
+            "context": "Sleep, activity, recovery"
+          }
+        ],
+        "visual_note": "Progress bar showing 14-day completion with checkmarks on walk days",
+        "cta": {
+          "text": "See What We Found",
+          "action": "scroll_to_insights"
+        }
+      },
+      "metadata": {
+        "rationale": "Hook: Celebrate 14-day milestone at m1 transition. CBT: Behavioral activation - validate user's commitment and effort. Arc position: Opening celebration sets positive tone for pattern reveals.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User views stats, feels validated → increases confidence in Genie's value, primes engagement with insights",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Wearable data Oct 12-25: 14 days tracked, morning walks 5/7 days (71% adherence)"
+      }
+    },
+    {
+      "card_id": "card_day14_002",
+      "card_type": "insight",
+      "subtype": "basic_insight",
+      "variant": "pattern_discovery",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your Bedtime Varies 2.5 Hours—That's Sabotaging Your Sleep",
+        "body": "Your bedtime swings from 11pm to 1:30am, and your sleep quality is paying the price. On nights you hit the pillow by 11pm (like Oct 22), you slept 7.8 hours with a quality score of 82. But when you stayed up until 1:30am (Oct 17), you only got 5.1 hours with a quality score of 51. That's a 27% drop in sleep quality just from late bedtimes. The issue isn't your ability to sleep—it's your schedule stealing your recovery time.",
+        "supporting_data": [
+          {
+            "label": "Bedtime range",
+            "value": "11pm - 1:30am",
+            "context": "2.5 hour variance"
+          },
+          {
+            "label": "Sleep quality impact",
+            "value": "27%",
+            "context": "Better on early bedtime nights"
+          }
+        ],
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Build: Reveal sleep inconsistency pattern from wearable data. CBT: Cognitive reframing - shift blame from 'I can't sleep' to 'I control my bedtime'. Arc position: First major insight after celebration.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User recognizes pattern, shifts from helplessness to control → updates persona signals (data-driven), primes for sleep experiment",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Wearable sleep data Oct 12-25: bedtime varies 11pm-1:30am, avg 12:15am. Best night Oct 22 (7.8 hrs, quality 82, bedtime 11pm). Worst night Oct 17 (5.1 hrs, quality 51, bedtime 1:30am)"
+      }
+    },
+    {
+      "card_id": "card_day14_003",
+      "card_type": "insight",
+      "subtype": "did_you_know",
+      "variant": "education_primer",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "DYK: Poor Sleep Triples Your Anxiety Risk",
+        "body": "Getting less than 7 hours of sleep increases your anxiety risk by 2.5 times. Your brain consolidates memories and regulates emotions during deep sleep—skimp on it, and you're setting yourself up for next-day stress. Aim to be in bed by 11pm tonight.",
+        "source": {
+          "name": "Singapore Mental Health Study 2016",
+          "organization": "Institute of Mental Health",
+          "link": "https://www.imh.com.sg/research/page.aspx?id=547",
+          "region": "Singapore"
+        },
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Build: Prime upcoming sleep experiment with medical evidence. CBT: Cognitive reframing via education. Arc position: Educational bridge between pattern reveal and action.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User learns medical stakes of poor sleep → increases motivation for sleep consistency challenge, validates fear_based motivation",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "DYK knowledge base Row 3: Youth (18-29), All, All, All, Mental Health, Sleep. Singapore Mental Health Study 2016, Institute of Mental Health",
+        "dyk_source_row": 3
+      }
+    },
+    {
+      "card_id": "card_day14_004",
+      "card_type": "insight",
+      "subtype": "basic_insight",
+      "variant": "behavior_validation",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your Morning Walks Are Working—12% Energy Boost",
+        "body": "You hit 71% adherence on morning walks this week (5 out of 7 days), and it's paying off. On days you walked (Oct 19, 21, 24), your energy ratings were 12% higher than days you skipped. That's proof you can build a habit that actually moves the needle on your fatigue. You're not just trying—you're succeeding.",
+        "supporting_data": [
+          {
+            "label": "Morning walk adherence",
+            "value": "71%",
+            "context": "5 out of 7 days"
+          },
+          {
+            "label": "Energy improvement",
+            "value": "+12%",
+            "context": "On walk days vs. non-walk days"
+          }
+        ],
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Build: Validate user's morning walk effort with measurable outcome. CBT: Self-efficacy building - celebrate mastery, build confidence. Arc position: Positive reinforcement after revealing problem.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User feels validated, builds confidence in habit-building ability → primes willingness to tackle sleep consistency challenge",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Wearable activity data Oct 12-25: morning walks 5/7 days (71% adherence). Notable correlation: 12% better energy ratings on walk days (Oct 19, 21, 24)"
+      }
+    },
+    {
+      "card_id": "card_day14_005",
+      "card_type": "insight",
+      "subtype": "basic_insight",
+      "variant": "multi_input_correlation",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your Morning Walks Improve Your Sleep (And Vice Versa)",
+        "body": "Your data reveals a powerful connection: on days you walked fewer than 5,000 steps (like Oct 16 and 23), your sleep quality dropped 18% that night. And when you slept 7+ hours (Oct 22, 24), your HRV—a recovery metric—was 15% higher the next morning. Your morning walks help you sleep better, and better sleep helps your body recover from anemia. They're not separate fixes—they're reinforcing each other.",
+        "supporting_data": [
+          {
+            "label": "Sleep quality drop",
+            "value": "18%",
+            "context": "On low-activity days (<5,000 steps)"
+          },
+          {
+            "label": "Recovery boost",
+            "value": "15%",
+            "context": "HRV higher after 7+ hours sleep"
+          }
+        ],
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Build: Reveal multi-input correlation (sleep ↔ activity). CBT: Cognitive reframing - show interconnection. Arc position: Deepening understanding of health ecosystem.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User understands holistic health approach → shifts from isolated interventions to systems thinking, validates Genie's multi-input framework",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Wearable sleep data Oct 12-25: HRV 15% higher on mornings after 7+ hrs sleep (Oct 22, 24). Sleep quality drops 18% on nights after <5000 steps (Oct 16, 23). Activity data: avg 6,842 steps"
+      }
+    },
+    {
+      "card_id": "card_day14_006",
+      "card_type": "insight",
+      "subtype": "basic_insight",
+      "variant": "symptom_attribution",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": null,
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Why You Still Feel Tired: Anemia + Poor Sleep = Double Fatigue Hit",
+        "body": "Your hemoglobin is 11.5 g/dL—below the normal range of 12-16—which means your blood carries less oxygen to your muscles and brain. That's the anemia draining your energy. But your sleep averages just 6.2 hours nightly with inconsistent quality, preventing your body from recovering. It's like trying to charge a phone that's still in use. The good news: sleep responds faster than anemia. Improve your sleep consistency first, and you'll feel better in 1 week while your iron builds over 4-6 weeks.",
+        "supporting_data": [
+          {
+            "label": "Hemoglobin level",
+            "value": "11.5 g/dL",
+            "context": "Below normal (12.0-16.0)"
+          },
+          {
+            "label": "Average sleep",
+            "value": "6.2 hrs",
+            "context": "Below recommended 7-8 hrs"
+          }
+        ],
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Payoff: Bridge medical (anemia) + lifestyle (sleep) for symptom attribution. CBT: Cognitive reframing - reframe fatigue from single cause to multi-factor, provide prioritization and hope. Arc position: Explaining the 'why' before proposing 'how'.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User understands why interventions so far only partially helped → accepts sleep as priority, primes for behavior experiment, validates Genie's medical+lifestyle integration",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Lab report Oct 11: Hemoglobin 11.5 g/dL (low, ref 12.0-16.0), Ferritin 9 ng/mL (low end). Wearable sleep data Oct 12-25: avg 6.2 hrs, quality score 68. User goal: Increase energy"
+      }
+    },
+    {
+      "card_id": "card_day14_007",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "behavior_experiment",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "7-Day Challenge: Bed by 11pm Every Night",
+        "body": "Your data shows sleep inconsistency is sabotaging your recovery from anemia. Let's prove it. For the next 7 days (Oct 26 - Nov 1), aim to be in bed by 11pm every night—the bedtime that gave you your best sleep (Oct 22: 7.8 hours, quality score 82). You hit 71% adherence on morning walks, so you can do this. We'll compare your energy levels and sleep quality before and after.",
+        "cta": {
+          "primary": {
+            "text": "Start 7-Day Challenge",
+            "action": "accept_challenge"
+          },
+          "secondary": {
+            "text": "Set Bedtime Reminder",
+            "action": "set_reminder",
+            "params": {
+              "time": "22:30",
+              "message": "Bedtime in 30 minutes—wind down now"
+            }
+          }
+        },
+        "challenge_details": {
+          "duration_days": 7,
+          "start_date": "2025-10-26",
+          "end_date": "2025-11-01",
+          "target_behavior": "In bed by 11pm",
+          "measurement": "Sleep quality score and energy ratings"
+        }
+      },
+      "metadata": {
+        "rationale": "Payoff: Propose behavior experiment to test sleep consistency hypothesis. CBT: Implementation intentions - specific when-then plan. Arc position: Action card after building medical + behavioral case.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User accepts challenge, sets reminder → starts behavior experiment, generates data for follow-up insights, validates time_poor_achiever persona (bounded experiment)",
+        "curiosity_hook": "concrete_benefit",
+        "data_sources_used": "Wearable sleep data Oct 12-25: bedtime varies 11pm-1:30am. Best sleep: Oct 22 (11pm bedtime, 7.8 hrs, quality 82). Morning walk adherence: 71% (user can stick to routines)"
+      }
+    },
+    {
+      "card_id": "card_day14_008",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "upload_prompt",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Time to Check: Are Your Iron Levels Improving?",
+        "body": "It's been 2 weeks since your baseline labs showed low hemoglobin (11.5 g/dL) and ferritin (9 ng/mL). You've been eating iron-rich foods since Day 4 and walking most mornings. Ferritin typically responds to dietary changes in 4-6 weeks, but early labs help us course-correct if needed. As you transition from pattern discovery to behavior optimization, follow-up labs ensure your anemia isn't getting worse while you work on sleep. Ask your doctor for a follow-up CBC and ferritin test.",
+        "cta": {
+          "primary": {
+            "text": "Schedule Follow-Up Labs",
+            "action": "prompt_lab_upload"
+          },
+          "secondary": {
+            "text": "Doctor Discussion Guide",
+            "action": "show_doctor_guide",
+            "params": {
+              "tests_to_request": ["CBC (Complete Blood Count)", "Ferritin", "Vitamin D (optional)"],
+              "context": "Follow-up after 2 weeks of dietary intervention"
+            }
+          }
+        },
+        "medical_context": {
+          "baseline_date": "2025-10-11",
+          "days_since_baseline": 14,
+          "interventions_started": ["Iron-rich foods (Day 4)", "Morning walks (Day 8)"],
+          "expected_response_timeline": "Ferritin: 4-6 weeks, Hemoglobin: 6-8 weeks"
+        }
+      },
+      "metadata": {
+        "rationale": "Payoff: Prompt follow-up labs to close feedback loop on anemia intervention, prepare for m2 milestone transition. CBT: Behavioral activation - proactive health monitoring. Arc position: Empowering action to end session, transitions to next phase.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User schedules labs or saves doctor guide → uploads results in 1-2 weeks, enables longitudinal tracking, advances to m2 milestone",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Lab report Oct 11 (14 days ago): Hemoglobin 11.5 g/dL, Ferritin 9 ng/mL. Actions taken: iron-rich foods since Day 4 (started Oct 16, 10 days ago), morning walks 5/7 days. Approaching m2 milestone (Day 15)"
+      }
+    }
+  ],
+  "card_mix_summary": {
+    "total_cards": 8,
+    "by_type": {
+      "insight": 5,
+      "action_prompt": 2,
+      "rich_format": 1
+    },
+    "by_motivation": {
+      "fear_based": 7,
+      "performance": 1
+    },
+    "medical_lifestyle_split": {
+      "medical": "25%",
+      "lifestyle": "62.5%",
+      "hybrid": "12.5%"
+    },
+    "scheduler_adherence": {
+      "phase": "Confirmed",
+      "expected_ratio": "90% fear_based, 10% alternatives",
+      "actual_ratio": "87.5% fear_based, 12.5% performance",
+      "compliant": true
+    }
+  },
+  "session_notes": {
+    "narrative_arc_execution": "CELEBRATE (card 1) → REVEAL pattern (card 2) → EDUCATE (card 3) → VALIDATE effort (card 4) → CONNECT multi-input (card 5) → EXPLAIN medical+lifestyle (card 6) → EXPERIMENT (card 7) → EMPOWER with labs (card 8)",
+    "emotional_pacing": "😊 POSITIVE → 😟 CONCERN → 📚 EDUCATION → 😊 VALIDATION → 💡 INSIGHT → 😟 CONCERN+HOPE → 💪 ACTION → 🔬 EMPOWERMENT",
+    "genie_differentiators_showcased": [
+      "Card 1: Wearable pattern discovery (14 days longitudinal data)",
+      "Card 5: Multi-input health correlation (sleep + activity)",
+      "Card 6: Medical + lifestyle integration (anemia + sleep symptom attribution)",
+      "Card 8: Goal-anchored progress tracking (follow-up labs tied to energy goal)"
+    ],
+    "key_hypotheses_tested": [
+      "Sleep inconsistency (bedtime variance) is primary modifiable factor for energy",
+      "Morning walks are working (12% energy boost validates user effort)",
+      "Multi-input approach: sleep and activity reinforce each other"
+    ],
+    "behavior_experiments_proposed": [
+      "7-day sleep consistency challenge (bed by 11pm)"
+    ],
+    "data_collection_requests": [
+      "Follow-up labs (CBC, ferritin) to track anemia intervention"
+    ],
+    "validation_checks_passed": {
+      "data_sources": "✅ All data exists in User Brief",
+      "onboarding_respect": "✅ Energy goal acknowledged in cards 1,2,4,6. No redundant questions.",
+      "emotional_pacing": "✅ Max 2 consecutive concerning cards (cards 2-3). Last card empowering. Alarming findings (card 6) include hope.",
+      "content_quality": "✅ Cards 2,4,5,6 connect to energy goal. Card 6 showcases medical+lifestyle integration.",
+      "dyk_validation": "✅ Card 3 uses DYK Row 3 verbatim, cites source.",
+      "card_type_limits": "✅ 5 Insight, 2 Action, 1 Rich Format. No limits exceeded.",
+      "medical_lifestyle_balance": "✅ 25% medical, 62.5% lifestyle, 12.5% hybrid (within target)"
+    }
+  }
+}

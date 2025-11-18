@@ -1,0 +1,290 @@
+{
+  "user_context": {
+    "user_id": "001",
+    "day_number": 1,
+    "scheduler_phase": "Unknown",
+    "current_milestone": "m0",
+    "motivation_hypothesis": "fear_based",
+    "motivation_confidence": "25%",
+    "persona_hypothesis": "time_poor_achiever",
+    "persona_confidence": "40%"
+  },
+  "generated_cards": [
+    {
+      "card_id": "card_day1_001",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "generic",
+      "motivation_variant": "generic",
+      "persona_complexity": "low",
+      "milestone": "m0",
+      "medical_vs_lifestyle": "education",
+      "content": {
+        "title": "Welcome to Genie—let's boost your energy",
+        "body": "You told us you want more energy, and we heard you. Energy isn't random—it's driven by things we can actually measure and improve: your blood work, sleep patterns, activity, and nutrition. Over the next few weeks, we'll help you find what's draining you and what can fuel you better. Ready to get started?",
+        "cta_primary": {
+          "label": "Let's do this",
+          "action": "dismiss"
+        }
+      },
+      "metadata": {
+        "rationale": "Day 1 hook - acknowledge stated energy goal from onboarding, build trust by showing we listened, preview journey (data → insights → action). Uses behavioral activation CBT to create momentum. First impression card.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User taps 'Let's do this' → Signal: confirms motivation for energy goal, validates engagement",
+        "curiosity_hook": "personal_data_hook",
+        "data_sources_used": "User goal: 'Increase energy' from onboarding | Demographics: 29F, Chinese, Singapore"
+      }
+    },
+    {
+      "card_id": "card_day1_002",
+      "card_type": "insight",
+      "subtype": "did_you_know",
+      "variant": "symptom_relief",
+      "motivation_variant": "symptom_relief",
+      "persona_complexity": "low",
+      "milestone": "m0",
+      "medical_vs_lifestyle": "education",
+      "content": {
+        "title": "Iron deficiency might be why you're tired",
+        "body": "You need 18mg of iron daily—nearly double what men need—to prevent anemia and fatigue. Yet 1 in 5 young Singaporean women are iron-deficient. Add iron-rich foods like spinach, lentils, or lean meat to your meals, and pair them with vitamin C for better absorption.",
+        "footer": "Source: Health Promotion Board Dietary Guidelines 2023"
+      },
+      "metadata": {
+        "rationale": "Build phase - educate on common energy blocker for 29F demographic. Uses cognitive reframing CBT to reframe fatigue as potentially fixable. Primers future lab upload request. DYK card from CSV Row 5.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User reads and considers → Signal: interest in nutrition/energy connection, primes for lab upload",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "DYK CSV Row 5: Youth (18-29), Female, Chinese, Nutrition | HPB Dietary Guidelines 2023",
+        "dyk_source": "Row 5, HPB Dietary Guidelines 2023"
+      }
+    },
+    {
+      "card_id": "card_day1_003",
+      "card_type": "action_prompt",
+      "subtype": "input",
+      "variant": "performance",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "discovery",
+      "content": {
+        "title": "Quick question: What drives your energy goal?",
+        "body": "We'll personalize your insights based on what matters most to you. This takes 5 seconds—just tap your answer.",
+        "question": "What matters most about having more energy?",
+        "answer_choices": [
+          "Avoid burnout and health issues",
+          "Perform better at work and goals",
+          "Feel better day-to-day",
+          "Look and feel younger"
+        ],
+        "footer": "Your answer helps us show you insights that resonate."
+      },
+      "metadata": {
+        "rationale": "Build phase - discovery card to test motivation hypothesis (fear vs performance vs symptom vs appearance). Uses motivational interviewing CBT to elicit input. Unknown scheduler phase requires testing 3-4 variants.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User taps answer → Signal updates: motivation_variant confidence increase, refines personalization strategy",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "No data - discovery card to test motivation hypothesis"
+      }
+    },
+    {
+      "card_id": "card_day1_004",
+      "card_type": "action_prompt",
+      "subtype": "upload",
+      "variant": "generic",
+      "motivation_variant": "generic",
+      "persona_complexity": "moderate",
+      "milestone": "m1",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Upload your lab report to see what's draining your energy",
+        "body": "Your blood work can reveal hidden causes of fatigue—low iron, thyroid issues, vitamin D deficiency. Upload any recent health screening or blood test results (last 6 months). Takes 2 minutes using your phone camera.",
+        "cta_primary": {
+          "label": "Upload Lab Report",
+          "action": "upload_lab_report"
+        },
+        "cta_secondary": {
+          "label": "I don't have one",
+          "action": "dismiss_upload"
+        }
+      },
+      "metadata": {
+        "rationale": "Build phase - upload prompt for baseline lab data (milestone m1). Uses implementation intentions CBT to create when-then plan. Shows value before asking (preview insights: ferritin, thyroid, vitamin D). Moderate persona complexity shows medical validation.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User uploads lab report → Signal: data_stage advances to 'baseline', unlocks medical insights | OR dismisses → awaiting_upload flag persists",
+        "curiosity_hook": "future_preview",
+        "data_sources_used": "No health data yet - awaiting upload"
+      }
+    },
+    {
+      "card_id": "card_day1_005",
+      "card_type": "insight",
+      "subtype": "did_you_know",
+      "variant": "performance",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m0",
+      "medical_vs_lifestyle": "education",
+      "content": {
+        "title": "Your sleep tonight affects your energy tomorrow",
+        "body": "Getting less than 7 hours of sleep increases your anxiety risk by 2.5 times. Your brain consolidates memories and regulates emotions during deep sleep—skimp on it, and you're setting yourself up for next-day stress. Aim to be in bed by 11pm tonight.",
+        "footer": "Source: Singapore Mental Health Study 2016, Institute of Mental Health"
+      },
+      "metadata": {
+        "rationale": "Build phase - educate on sleep-energy connection with actionable quick win (11pm bedtime tonight). Uses cognitive reframing CBT to reframe sleep as performance tool. DYK card from CSV Row 2. Performance motivation variant.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User considers sleep improvement → Signal: interest in sleep as energy lever, primes for wearable connection",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "DYK CSV Row 2: Youth (18-29), All, Singapore | Singapore Mental Health Study 2016, IMH",
+        "dyk_source": "Row 2, Singapore Mental Health Study 2016, IMH"
+      }
+    },
+    {
+      "card_id": "card_day1_006",
+      "card_type": "action_prompt",
+      "subtype": "input",
+      "variant": "generic",
+      "motivation_variant": "generic",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "discovery",
+      "content": {
+        "title": "How do you prefer your health insights?",
+        "body": "We can go deep with research and mechanisms, or keep things quick and actionable. What works best for you?",
+        "question": "What's your preference for health content?",
+        "answer_choices": [
+          "Quick actions I can do now",
+          "Deep dives with research and mechanisms",
+          "Medically validated with doctor-friendly info",
+          "Mix of all three"
+        ],
+        "footer": "This helps us match your style."
+      },
+      "metadata": {
+        "rationale": "Build phase - discovery card to test persona hypothesis (time-poor vs data-driven vs condition-manager). Uses motivational interviewing CBT. Hypothesis scheduler phase (40% persona confidence) requires validation.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User taps answer → Signal updates: persona_type confidence increase, adjusts content complexity going forward",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "No data - discovery card to test persona hypothesis"
+      }
+    },
+    {
+      "card_id": "card_day1_007",
+      "card_type": "connected_data",
+      "subtype": null,
+      "variant": "performance",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Connect your wearable to track what affects your energy",
+        "body": "Your sleep quality, activity levels, and recovery patterns all impact energy. Connect Apple Health, Google Fit, or your fitness tracker to discover your personal energy patterns. Takes 30 seconds.",
+        "cta_primary": {
+          "label": "Connect Wearable",
+          "action": "connect_wearable"
+        },
+        "cta_secondary": {
+          "label": "Maybe later",
+          "action": "dismiss_wearable"
+        },
+        "supported_integrations": [
+          "Apple Health",
+          "Google Fit",
+          "Fitbit",
+          "Garmin",
+          "Whoop",
+          "Oura"
+        ]
+      },
+      "metadata": {
+        "rationale": "Payoff phase - wearable connection request (milestone m2). Uses implementation intentions CBT. Shows value before asking (preview sleep/activity/recovery insights). Performance motivation variant emphasizes optimization.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User connects wearable → Signal: wearable_connected=true, unlocks lifestyle insights | OR dismisses → awaiting_wearable_connection flag persists",
+        "curiosity_hook": "future_preview",
+        "data_sources_used": "No wearable data yet - invitation to connect"
+      }
+    },
+    {
+      "card_id": "card_day1_008",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "generic",
+      "motivation_variant": "generic",
+      "persona_complexity": "low",
+      "milestone": "m0",
+      "medical_vs_lifestyle": "education",
+      "content": {
+        "title": "You're on your way to more energy",
+        "body": "You completed your first day with Genie and took the first step toward understanding what drives your energy levels. Tomorrow, we'll start building your personalized energy roadmap based on what you share with us.",
+        "cta_primary": {
+          "label": "Set daily reminder",
+          "action": "set_notification_reminder"
+        },
+        "cta_secondary": {
+          "label": "Done for today",
+          "action": "dismiss"
+        }
+      },
+      "metadata": {
+        "rationale": "Payoff phase - celebrate Day 1 completion, build self-efficacy and habit formation. Uses self-efficacy building CBT to validate progress. Ends on positive empowerment (not open question). Preview tomorrow to maintain engagement.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User sets reminder OR dismisses feeling positive → Signal: habit formation initiated, engagement momentum established",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Day 1 completion milestone"
+      }
+    }
+  ],
+  "card_mix_summary": {
+    "total_cards": 8,
+    "by_type": {
+      "insight": 3,
+      "action_prompt": 4,
+      "connected_data": 1
+    },
+    "by_motivation": {
+      "generic": 4,
+      "symptom_relief": 1,
+      "performance": 3
+    },
+    "medical_lifestyle_split": {
+      "medical": "12.5%",
+      "lifestyle": "12.5%",
+      "education": "50%",
+      "discovery": "25%",
+      "note": "Day 1 pre-baseline - no health data available yet, heavily weighted toward education (50%) and discovery (25%) per target mix"
+    },
+    "scheduler_adherence": {
+      "phase": "Unknown",
+      "expected_ratio": "Test 3-4 motivation variants, include discovery cards",
+      "actual_ratio": "3 motivation variants tested (generic 50%, performance 37.5%, symptom_relief 12.5%) | 2 discovery cards (25%)",
+      "compliant": true,
+      "note": "Unknown phase requirements met: testing multiple motivation variants, 2 discovery cards included"
+    },
+    "quality_checklist": {
+      "data_inventory_created": true,
+      "no_unavailable_data_referenced": true,
+      "onboarding_respect_validated": true,
+      "goal_acknowledged_in_card_1": true,
+      "narrative_arc_coherent": true,
+      "emotional_pacing": "😊 WELCOME (1) → 📚 EDUCATE (2,5) → 🤔 DISCOVER (3,6) → 💪 INVITE (4,7) → 🎉 CELEBRATE (8)",
+      "discovery_cards_minimum_met": true,
+      "dyk_cards_use_csv_content": true,
+      "all_cards_pass_so_what_test": true,
+      "max_2_consecutive_concerning": true,
+      "first_card_not_alarming": true,
+      "last_card_empowering": true,
+      "all_questions_have_answer_choices": true,
+      "no_asking_onboarding_data": true
+    }
+  },
+  "_generation_metadata": {
+    "generated_at": "2025-11-18T00:00:00+08:00",
+    "agent": "health-coach-card-generator",
+    "user_brief_version": "1.0",
+    "dyk_knowledge_base_version": "2025-11-18",
+    "card_skeleton_file": "/Users/abigail/Documents/Product Documentation/experiments/today/demo/card-skeletons-day1.json",
+    "validation_status": "PASSED",
+    "ready_for_card_viewer": true
+  }
+}

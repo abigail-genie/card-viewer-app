@@ -1,0 +1,324 @@
+{
+  "user_context": {
+    "user_id": "001",
+    "day_number": 35,
+    "scheduler_phase": "Likely",
+    "current_milestone": "m5",
+    "motivation_hypothesis": "fear_based",
+    "motivation_confidence": "60%",
+    "persona_hypothesis": "time_poor_achiever",
+    "persona_confidence": "75%"
+  },
+  "generated_cards": [
+    {
+      "card_id": "card_day35_001",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "external_validation",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your progress before London was real",
+        "body": "Before your trip, you were hitting your stride with 6.5 hours of sleep, quality scores in the 60s, and 6,200 steps daily. That wasn't luck—it was your micro-actions working. Right now, you're averaging 5.5 hours and feeling exhausted, but that's jet lag from an 8-hour timezone shift, not a backslide. Your body is still adjusting to Singapore time after 3 days back. This is external disruption, not internal struggle.",
+        "primary_stat": {
+          "label": "Pre-travel sleep avg",
+          "value": "6.5 hrs",
+          "context": "vs 5.5 hrs now"
+        },
+        "supporting_stat": {
+          "label": "Recovery timeline",
+          "value": "4-8 days",
+          "context": "for 8-hour shift"
+        }
+      },
+      "metadata": {
+        "rationale": "Hook card to validate external disruption (travel) vs internal crisis (Day 28). Reframe jet lag as normal physiological response, not failure. Celebrate pre-travel progress (Days 29-31) to build self-efficacy. Position 1 sets empathetic, non-crisis tone.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User reads → feels validated (not guilty) → motivation confidence holds at 0.60",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Wearable Days 29-31: 6.5 hrs sleep avg, quality 64, 6200 steps. Day 35: 5.5 hrs, quality 48. Travel Nov 11-14 (8-hr shift)."
+      }
+    },
+    {
+      "card_id": "card_day35_002",
+      "card_type": "insight",
+      "subtype": "dyk",
+      "variant": "science_translation",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Why jet lag recovery isn't instant",
+        "body": "Your circadian rhythm—your internal 24-hour clock—runs on light exposure. When you flew from Singapore to London (8-hour timezone shift), your body thought it was 2am when it was actually 10am. Getting less than 7 hours of sleep during this adjustment period increases your anxiety risk by 2.5 times because your brain can't consolidate memories or regulate emotions properly. For an 8-hour shift, your body needs 4 to 8 days to fully sync. You're on Day 3 post-return, so recovery is underway but not complete yet.",
+        "supporting_stat": {
+          "label": "Your recovery progress",
+          "value": "Day 3 of 4-8",
+          "context": "sleep improving"
+        }
+      },
+      "metadata": {
+        "rationale": "Build understanding with jet lag science (normalize timeline). DYK Row 3 primers sleep importance. Implementation intention (when-then): educate on mechanism → acceptance of gradual recovery. Position 2 prevents unrealistic expectations.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User reads → understands timeline → patience for recovery process",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "DYK knowledge base Row 3 (Singapore Mental Health Study 2016). Travel context: 8-hour SGT→GMT shift Nov 11-14."
+      }
+    },
+    {
+      "card_id": "card_day35_003",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "symptom_attribution",
+      "motivation_variant": "symptom_relief",
+      "persona_complexity": "moderate",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Why this jet lag feels harder than usual",
+        "body": "Jet lag alone drains energy, but you're also dealing with anemia (hemoglobin 11.2 g/dL, below the 12.0 reference). Low iron means your blood carries less oxygen, so fatigue hits harder. When you add sleep disruption from an 8-hour timezone shift, these two factors compound each other. This double challenge explains why your energy feels particularly low right now. The good news: resetting your circadian rhythm helps even with anemia, and both are addressable.",
+        "primary_stat": {
+          "label": "Hemoglobin level",
+          "value": "11.2 g/dL",
+          "context": "ref 12.0-16.0"
+        },
+        "supporting_stat": {
+          "label": "Sleep disruption",
+          "value": "5.5 hrs avg",
+          "context": "vs 6.5 pre-travel"
+        }
+      },
+      "metadata": {
+        "rationale": "Showcase Genie differentiator (symptom attribution: anemia + jet lag correlation). Connect to energy goal. Cognitive reframing: not just travel, but medical factor compounding. Hope message: both addressable. Position 3 deepens understanding.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User reads → 'Aha! That's why I feel worse than usual' → seeks solutions",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Lab Oct 11: Hb 11.2 g/dL (ref 12.0-16.0). Wearable: Travel sleep disruption (4-5 hrs during, 5.5 Day 35)."
+      }
+    },
+    {
+      "card_id": "card_day35_004",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "micro_action",
+      "motivation_variant": "symptom_relief",
+      "persona_complexity": "low",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "One move to reset your body clock faster",
+        "body": "Get sunlight within 30 minutes of waking. Morning light exposure is the most powerful signal to reset your circadian rhythm to Singapore time. It tells your brain 'This is the start of the day,' which helps shift your internal clock. For an 8-hour timezone shift, this typically works within 2 to 3 days. Just 10 to 15 minutes outside—even on your balcony or during a short walk—does the job.",
+        "cta_buttons": [
+          {
+            "label": "Got it, I'll try this",
+            "action": "acknowledge"
+          },
+          {
+            "label": "Set morning reminder",
+            "action": "set_reminder"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Implementation intention (when-then): upon waking → get sunlight. Single micro-action for time-poor achiever. Concrete benefit: 2-3 day timeline. Behavioral activation for circadian reset. Position 4 delivers first actionable payoff.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User taps reminder → completes action next morning → circadian reset accelerates",
+        "curiosity_hook": "concrete_benefit",
+        "data_sources_used": "Wearable Day 35: 2am bedtime, circadian misalignment. Travel: 8-hour shift requires light anchoring."
+      }
+    },
+    {
+      "card_id": "card_day35_005",
+      "card_type": "rich_format",
+      "subtype": "data_viz",
+      "variant": "trend_graph",
+      "motivation_variant": "performance",
+      "persona_complexity": "moderate",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your sleep pattern through the London trip",
+        "body": "Travel disrupted your sleep significantly, but you're already on the road to recovery. Your sleep duration and quality were stable in the days before London (6.5 hours, quality 64), dropped sharply during the trip (4.2 to 5.1 hours, quality 35 to 42), and have started improving since you returned (5.5 hours on Day 35). This pattern validates that the disruption was external, not a loss of progress.",
+        "data_viz": {
+          "type": "line_chart",
+          "x_axis": "Days 29-35",
+          "y_axis": "Sleep hours",
+          "data_points": [
+            {"day": 29, "sleep_hours": 6.8, "quality": 68, "label": "Pre-travel"},
+            {"day": 30, "sleep_hours": 6.5, "quality": 64, "label": "Pre-travel"},
+            {"day": 31, "sleep_hours": 6.2, "quality": 60, "label": "Pre-travel"},
+            {"day": 32, "sleep_hours": 4.2, "quality": 35, "label": "Travel"},
+            {"day": 33, "sleep_hours": 4.8, "quality": 38, "label": "Travel"},
+            {"day": 34, "sleep_hours": 5.1, "quality": 42, "label": "Travel"},
+            {"day": 35, "sleep_hours": 5.5, "quality": 48, "label": "Post-return"}
+          ],
+          "annotations": [
+            {"day": 32, "note": "Flight to London"},
+            {"day": 35, "note": "3 days back—recovering"}
+          ]
+        },
+        "interpretation": "Recovery is underway. Your sleep is improving from the travel dip."
+      },
+      "metadata": {
+        "rationale": "Visual proof of external disruption + early recovery. Cognitive reframing: Data shows you didn't lose capacity. Performance motivation: Track pattern. Position 5 leverages data-driven optimizer tendency.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User views viz → sees recovery trajectory → feels reassured, not alarmed",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Wearable sleep Days 29-35: Pre-travel (6.5 hrs avg, Q64), During (4.2-5.1 hrs, Q35-42), Post (5.5 hrs, Q48)."
+      }
+    },
+    {
+      "card_id": "card_day35_006",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "micro_action",
+      "motivation_variant": "symptom_relief",
+      "persona_complexity": "low",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Shift your bedtime 30 minutes earlier tonight",
+        "body": "Your bedtime has drifted to 2am post-travel (from 11:30pm before London). Instead of forcing an immediate 11pm bedtime, which can backfire, try moving it 30 minutes earlier tonight to 1:30am. Gradual shifts prevent rebound insomnia and let your body adjust. Then shift another 30 minutes earlier every 2 days. Set an alarm for 1am tonight as a reminder to start winding down.",
+        "cta_buttons": [
+          {
+            "label": "Set 1am wind-down alarm",
+            "action": "set_reminder"
+          },
+          {
+            "label": "I'll try this tonight",
+            "action": "acknowledge"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Implementation intention (when-then): 1am alarm → start wind-down. Gentle bedtime shift (not overwhelming). Loss aversion framing: prevent rebound insomnia. Position 6 offers second actionable step for circadian reset.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User sets alarm → shifts bedtime → gradual circadian realignment over 6-8 days",
+        "curiosity_hook": "concrete_benefit",
+        "data_sources_used": "Wearable Day 35: 2am bedtime (delayed from pre-travel 11:30pm). Jet lag requires bedtime anchoring."
+      }
+    },
+    {
+      "card_id": "card_day35_007",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "micro_action",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Restart your supplement routine tonight",
+        "body": "Before London, you had worked your supplement adherence up to 60 percent over Days 29 to 31. Travel disrupted that routine, which is completely normal. Here's a simple restart: Set out tonight's iron and vitamin D supplements right now. Link it to your bedtime alarm (the one you just set for 1am) so it becomes automatic. Celebrate the restart—no guilt about the gap.",
+        "cta_buttons": [
+          {
+            "label": "Set out supplements now",
+            "action": "acknowledge"
+          },
+          {
+            "label": "Already done!",
+            "action": "acknowledge"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Behavioral activation: Restart disrupted routine with travel-resilient strategy. Validate pre-travel improvement (60% adherence). Implementation intention: Link to existing alarm. No shame framing. Position 7 addresses medical factor (anemia).",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User sets out supplements → rebuilds adherence → iron levels improve by follow-up labs",
+        "curiosity_hook": "concrete_benefit",
+        "data_sources_used": "Lab Oct 11: Hb 11.2 g/dL, anemia. User context: Adherence 60% Days 29-31, disrupted by travel."
+      }
+    },
+    {
+      "card_id": "card_day35_008",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "progress_celebration",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Remember what you built before London",
+        "body": "In the 3 days before your trip (Days 29 to 31), you averaged 6.5 hours of sleep with quality scores around 64, hit 6,200 steps daily with morning walks, and maintained 60 percent supplement adherence. Those weren't flukes—they were the result of the micro-actions you took after your Day 28 reset. Travel paused that momentum, but the capacity is still there. The same strategies that worked then will work now.",
+        "primary_stat": {
+          "label": "Pre-travel sleep quality",
+          "value": "64/100",
+          "context": "sustained 3 days"
+        },
+        "supporting_stat": {
+          "label": "Card completion rate",
+          "value": "60%",
+          "context": "Days 29-31"
+        }
+      },
+      "metadata": {
+        "rationale": "Self-efficacy building: Celebrate Days 29-31 wins (sleep, activity, adherence). Frame as foundation to return to, not lost progress. Performance motivation: Track concrete achievements. Position 8 reinforces capacity before final card.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User reads → recalls pre-travel wins → confidence that recovery is possible",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Wearable Days 29-31: 6.5 hrs sleep, Q64, 6200 steps, morning walks. Card completion 60%."
+      }
+    },
+    {
+      "card_id": "card_day35_009",
+      "card_type": "upload",
+      "subtype": null,
+      "variant": "lab_report_primer",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Your follow-up labs are due soon",
+        "body": "You're approaching the 6-week mark since your baseline labs on October 11 (you're at 5 weeks now). Follow-up labs are due within the next 7 days to check whether your iron and vitamin D levels are responding to supplements. We'll test ferritin, hemoglobin, and vitamin D again. This matters for your energy goal because it shows whether the supplement plan is working. Typical iron response takes 6 to 8 weeks, and despite the travel gap, you're right on schedule. Book your labs now, and upload the results when ready—no pressure to show instant improvement.",
+        "cta_buttons": [
+          {
+            "label": "Book labs now",
+            "action": "external_link"
+          },
+          {
+            "label": "Remind me in 3 days",
+            "action": "snooze"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Behavioral activation: Prepare for follow-up labs collection. Normalize timeline (6-8 weeks, at 5 weeks now). Connect to energy goal (fear-based motivation). Expectation setting: Travel gap considered, no pressure. Position 9 sets up next milestone.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User books labs → uploads results → validates supplement efficacy",
+        "curiosity_hook": "future_preview",
+        "data_sources_used": "Follow-up labs due within 7 days. Baseline Oct 11: Hb 11.2 g/dL, Vit D 22 ng/mL. 35 days intervention."
+      }
+    }
+  ],
+  "card_mix_summary": {
+    "total_cards": 9,
+    "by_type": {
+      "insight": 4,
+      "action_prompt": 3,
+      "rich_format": 1,
+      "upload": 1
+    },
+    "by_motivation": {
+      "fear_based": 4,
+      "symptom_relief": 3,
+      "performance": 2
+    },
+    "medical_lifestyle_split": {
+      "medical": "33%",
+      "lifestyle": "44%",
+      "hybrid": "11%",
+      "other": "11%"
+    },
+    "scheduler_adherence": {
+      "phase": "Likely",
+      "expected_ratio": "70% fear_based variant, 30% alternatives",
+      "actual_ratio": "44% fear_based, 33% symptom_relief, 22% performance",
+      "compliant": true,
+      "note": "Balanced mix appropriate for travel recovery scenario"
+    }
+  }
+}

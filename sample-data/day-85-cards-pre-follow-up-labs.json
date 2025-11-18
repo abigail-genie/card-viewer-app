@@ -1,0 +1,408 @@
+{
+  "user_context": {
+    "user_id": "001",
+    "day_number": 85,
+    "scheduler_phase": "Confirmed",
+    "current_milestone": "m4",
+    "motivation_hypothesis": "fear_based",
+    "motivation_confidence": "80%",
+    "persona_hypothesis": "time_poor_achiever",
+    "persona_confidence": "90%"
+  },
+  "generated_cards": [
+    {
+      "card_id": "card_day85_001",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "milestone_achievement",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Your Labs Are In—And They're Incredible",
+        "body": "Every single deficiency from your baseline labs? Completely resolved. Your hemoglobin is 13.1 g/dL (up from 11.4—anemia gone), ferritin hit 42 ng/mL (from a critically low 9—optimal iron stores), and vitamin D reached 34 ng/mL (from insufficient 18.5—now healthy). This is what 85 days of consistency looks like.",
+        "visualization": null,
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Day 85 major milestone - ALL baseline deficiencies resolved. Opens with triumphant revelation to hook user with biggest win of journey. CBT: Self-efficacy building celebrates mastery. Narrative position: Hook to grab attention with complete transformation.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User feels validated and proud → Updates motivation confidence (fear-based validated through sustained commitment), confirms achievement mindset",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Lab Report #3 (Jan 3, 2025): Hemoglobin 13.1 g/dL (baseline 11.4), Ferritin 42 ng/mL (baseline 9), Vitamin D 34 ng/mL (baseline 18.5)"
+      }
+    },
+    {
+      "card_id": "card_day85_002",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "goal_achievement",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "You Said You Wanted More Energy. Mission Accomplished.",
+        "body": "Remember Day 3 when you told us your primary goal was to increase energy? You reported 'energy levels feel great'—and your labs prove exactly why. Your hemoglobin jumped 14.9%, ferritin skyrocketed 367%, and you're consistently sleeping 7.6 hours. Low iron, poor sleep, and vitamin D deficiency were draining your energy. You fixed all three. That's not luck—that's you showing up every single day.",
+        "visualization": null,
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Validates user's PRIMARY stated goal 'Increase energy' with objective data proof. CBT: Cognitive reframing connects medical improvements to lived experience. Narrative position: Hook continues celebration by anchoring to user's personal goal. Shows Genie delivered on promise.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User feels goal completion satisfaction → Reinforces trust in Genie's personalized approach, strengthens goal-oriented engagement",
+        "curiosity_hook": "concrete_benefit",
+        "data_sources_used": "User goal: 'Increase energy' (achieved), User report: 'energy levels feel great', Lab improvements: Hemoglobin +14.9%, Ferritin +367%, Sleep: 7.6 hrs sustained (up from 6.2)"
+      }
+    },
+    {
+      "card_id": "card_day85_003",
+      "card_type": "rich_format",
+      "subtype": "data_viz",
+      "variant": "transformation_timeline",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Your 85-Day Health Transformation in Numbers",
+        "body": "Three lab reports. Three massive improvements. See how your body healed from baseline through 6 weeks to today.",
+        "visualization": {
+          "type": "timeline_comparison",
+          "stats": [
+            {
+              "label": "Hemoglobin",
+              "value": "13.1 g/dL",
+              "change": "+14.9%",
+              "trend": "up",
+              "status": "ANEMIA RESOLVED",
+              "timeline": [
+                {"date": "Oct 11", "value": "11.4", "status": "Low"},
+                {"date": "Nov 18", "value": "12.2", "status": "Improving"},
+                {"date": "Jan 3", "value": "13.1", "status": "Optimal"}
+              ]
+            },
+            {
+              "label": "Ferritin",
+              "value": "42 ng/mL",
+              "change": "+367%",
+              "trend": "up",
+              "status": "OPTIMAL",
+              "timeline": [
+                {"date": "Oct 11", "value": "9", "status": "Critical"},
+                {"date": "Nov 18", "value": "14", "status": "Improving"},
+                {"date": "Jan 3", "value": "42", "status": "Optimal"}
+              ]
+            },
+            {
+              "label": "Vitamin D",
+              "value": "34 ng/mL",
+              "change": "+83.8%",
+              "trend": "up",
+              "status": "SUFFICIENT",
+              "timeline": [
+                {"date": "Oct 11", "value": "18.5", "status": "Insufficient"},
+                {"date": "Nov 18", "value": "26", "status": "Improving"},
+                {"date": "Jan 3", "value": "34", "status": "Sufficient"}
+              ]
+            }
+          ]
+        },
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Visual storytelling of complete transformation across 3 timepoints. Shows consistent improvement trajectory (not just endpoint). CBT: Behavioral activation through visual proof of progress. Narrative position: Build - educate through data visualization. Showcases Genie differentiator: longitudinal medical data tracking.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User studies visualization, feels pride in visible progress → Strengthens data-driven engagement, validates sustained effort",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Baseline labs Oct 11: Hemoglobin 11.4, Ferritin 9, Vitamin D 18.5 | 6-Week labs Nov 18: Hemoglobin 12.2, Ferritin 14, Vitamin D 26 | 3-Month labs Jan 3: Hemoglobin 13.1, Ferritin 42, Vitamin D 34"
+      }
+    },
+    {
+      "card_id": "card_day85_004",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "behavior_transformation",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "But Here's What Really Changed Your Health",
+        "body": "The labs are proof—but your daily habits were the engine. You went from 6.2 to 7.6 hours of sleep every night for over a month. You built a morning walk routine with 85% adherence that's now a genuine lifestyle habit. Your bedtime consistency is within 12 minutes—that's elite-level sleep hygiene. These aren't temporary fixes. This is who you are now.",
+        "visualization": null,
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Celebrates behavioral transformation beyond biomarkers. CBT: Self-efficacy building through habit mastery recognition. Narrative position: Build - shows lifestyle changes drove medical improvements. Bridges medical + lifestyle (40-60% balance). Performance motivation variant rewards achievement.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User recognizes habit ownership → Strengthens identity as 'healthy person', increases sustainability confidence",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Wearable data 85 days: Sleep 7.6 hrs (up 22.6% from 6.2), Steps 8,200 avg (up 34.4% from 6,100), Morning walks 85% adherence (49 days sustained), Bedtime consistency ±12 min"
+      }
+    },
+    {
+      "card_id": "card_day85_005",
+      "card_type": "insight",
+      "subtype": "did_you_know",
+      "variant": "iron_education",
+      "motivation_variant": "generic",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Did You Know? You Beat the Odds",
+        "body": "You need 18mg of iron daily—nearly double what men need—to prevent anemia and fatigue. Yet 1 in 5 young Singaporean women are iron-deficient. Add iron-rich foods like spinach, lentils, or lean meat to your meals, and pair them with vitamin C for better absorption. You were part of that 20%—and now you're not.",
+        "visualization": null,
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Educates on iron deficiency prevalence while celebrating user's success. CBT: Cognitive reframing contextualizes achievement within population health. Narrative position: Build - primer before cardiovascular insights. DYK from CSV Row 5 (Youth/Female/Nutrition).",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User learns why iron was critical → Deepens health literacy, validates importance of adherence",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "DYK CSV Row 5: HPB Dietary Guidelines 2023 - 1 in 5 young Singaporean women iron-deficient, 18mg daily need for women",
+        "dyk_source": "Row 5, HPB Dietary Guidelines 2023"
+      }
+    },
+    {
+      "card_id": "card_day85_006",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "cardiovascular_transformation",
+      "motivation_variant": "performance",
+      "persona_complexity": "moderate",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your Heart Just Entered Athlete Territory",
+        "body": "While your labs were transforming, something else quietly changed—your cardiovascular fitness. Your resting heart rate dropped from 64 to 55 bpm. That's a 9-beat improvement that puts you in athlete-level territory. Your HRV climbed 23.8% to 52ms, signaling strong recovery and reduced stress. This didn't happen overnight. This is 85 days of morning walks, consistent sleep, and your body optimizing itself cell by cell.",
+        "visualization": null,
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Reveals hidden cardiovascular transformation beyond lab results. CBT: Self-efficacy building through unexpected bonus achievement. Narrative position: Payoff - shows total body optimization. Connects wearable data to lifestyle habits. Performance motivation highlights athletic achievement.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User surprised by cardiovascular gains → Discovers additional value in wearable tracking, motivates continued monitoring",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Wearable recovery data 85 days: Resting HR 55 bpm (down from 64, -9 bpm), HRV 52 ms (up 23.8% from 42), Pattern: athlete-level cardiovascular fitness"
+      }
+    },
+    {
+      "card_id": "card_day85_007",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "optimization_transition",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m5",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "What's Next? From Fixing to Optimizing",
+        "body": "You've completed the health recovery phase—all deficiencies resolved, energy goal crushed. Now we enter the optimization phase: fine-tuning your already-healthy body for peak performance. What matters most to you now?",
+        "visualization": null,
+        "cta": {
+          "primary_button": "Let's go",
+          "options": [
+            {
+              "id": "sustained_energy",
+              "label": "Sustain high energy all day long",
+              "description": "Eliminate any remaining afternoon dips, optimize meal timing and movement patterns"
+            },
+            {
+              "id": "athletic_performance",
+              "label": "Boost athletic performance & recovery",
+              "description": "Maximize your newfound cardiovascular fitness, optimize training and recovery"
+            },
+            {
+              "id": "maintain_explore",
+              "label": "Maintain current wins, explore new goals",
+              "description": "Lock in your transformation, discover what else your body can achieve"
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "rationale": "Transitions from m4 (fixing deficiencies) to m5 (performance optimization). CBT: Implementation intentions through goal selection. Narrative position: Payoff - future-focused guidance. Gives achiever persona clear next milestone without overwhelming.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User selects optimization focus → Updates goal preferences, guides m5 content strategy",
+        "curiosity_hook": "future_preview",
+        "data_sources_used": "Current milestone: m4, Next milestone: m5 (performance optimization), Secondary goals: optimize performance, sustain improvements"
+      }
+    },
+    {
+      "card_id": "card_day85_008",
+      "card_type": "rich_format",
+      "subtype": "health_report",
+      "variant": "maintenance_guide",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "How to Keep These Wins Forever",
+        "body": "You asked how to maintain these improvements long-term. Here's your blueprint—simple, sustainable, and proven by your own 85-day track record.",
+        "visualization": {
+          "type": "maintenance_checklist",
+          "sections": [
+            {
+              "section_title": "Keep Doing (Non-Negotiable)",
+              "items": [
+                {
+                  "item": "Morning walks 5-6 days per week",
+                  "frequency": "Daily habit",
+                  "current_adherence": "85%"
+                },
+                {
+                  "item": "11pm bedtime (±30 min is fine)",
+                  "frequency": "Nightly",
+                  "current_adherence": "91%"
+                },
+                {
+                  "item": "7+ hours sleep",
+                  "frequency": "Nightly",
+                  "current_adherence": "Sustained 35+ days"
+                },
+                {
+                  "item": "Iron-rich foods 3x weekly",
+                  "frequency": "Weekly",
+                  "current_adherence": "Ongoing"
+                }
+              ]
+            },
+            {
+              "section_title": "Monitor (Stay Aware)",
+              "items": [
+                {
+                  "item": "Daily energy check-ins",
+                  "frequency": "Daily",
+                  "action": "Notice any sustained dips (3+ days)"
+                },
+                {
+                  "item": "Sleep quality scores",
+                  "frequency": "Weekly review",
+                  "action": "Aim to keep 75+ scores"
+                },
+                {
+                  "item": "6-month lab follow-up",
+                  "frequency": "June 2025",
+                  "action": "Confirm sustained improvements"
+                }
+              ]
+            },
+            {
+              "section_title": "Adapt (Be Flexible)",
+              "items": [
+                {
+                  "item": "Supplement adjustments",
+                  "action": "Consult doctor—may reduce iron dose given optimal ferritin"
+                },
+                {
+                  "item": "Seasonal vitamin D",
+                  "action": "Monitor during rainy season (less sun exposure)"
+                },
+                {
+                  "item": "Activity progression",
+                  "action": "Increase intensity as fitness improves"
+                }
+              ]
+            }
+          ]
+        },
+        "cta": null
+      },
+      "metadata": {
+        "rationale": "Answers Ask Genie question 'How do I maintain these improvements long-term?' (Dec 30). CBT: Implementation intentions with specific maintenance plan. Narrative position: Payoff - prevents backsliding anxiety (fear-based motivation). Provides concrete sustainability roadmap for achiever persona.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User saves maintenance checklist → Reduces maintenance anxiety, creates long-term adherence framework",
+        "curiosity_hook": "concrete_benefit",
+        "data_sources_used": "Ask Genie question (Dec 30): 'How do I maintain these improvements long-term?', Established habits: morning walks (85% adherence), 11pm bedtime (91% adherence), daily engagement (76%)"
+      }
+    },
+    {
+      "card_id": "card_day85_009",
+      "card_type": "sharing",
+      "subtype": null,
+      "variant": "milestone_celebration",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m4",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Share Your 85-Day Health Transformation",
+        "body": "This is the kind of achievement worth celebrating. Your complete health turnaround—from multiple deficiencies to optimal markers—could inspire someone else to start their own journey. Want to share your wins?",
+        "visualization": {
+          "type": "shareable_card",
+          "achievement_summary": {
+            "title": "85 Days. Complete Health Transformation.",
+            "stats": [
+              "✓ Anemia RESOLVED (Hemoglobin +14.9%)",
+              "✓ Iron stores OPTIMAL (Ferritin +367%)",
+              "✓ Vitamin D SUFFICIENT (+83.8%)",
+              "✓ Cholesterol NORMALIZED (-11.4%)",
+              "✓ Cardiovascular fitness: Athlete-level",
+              "✓ Energy goal: ACHIEVED"
+            ],
+            "tagline": "From fatigue and deficiencies to optimal health—powered by consistency, data, and Genie."
+          }
+        },
+        "cta": {
+          "primary_button": "Share",
+          "options": [
+            {
+              "id": "share_care_team",
+              "label": "Share with my care team",
+              "description": "Send to your doctor to show progress and discuss next steps"
+            },
+            {
+              "id": "share_friend",
+              "label": "Inspire a friend",
+              "description": "Motivate someone on their own health journey"
+            },
+            {
+              "id": "save_personal",
+              "label": "Save for my records",
+              "description": "Keep this milestone in your personal health archive"
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "rationale": "Amplifies achievement through sharing opportunity. CBT: Self-efficacy building via social recognition. Narrative position: Payoff finale - celebration with optional sharing. Creates accountability through potential social commitment. Achiever persona may value milestone documentation.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User shares or saves achievement → Social proof reinforces transformation, creates accountability for maintenance",
+        "curiosity_hook": "social_proof",
+        "data_sources_used": "Complete health transformation: ALL deficiencies resolved in 85 days, Energy goal achieved, Sustained behavioral changes"
+      }
+    }
+  ],
+  "card_mix_summary": {
+    "total_cards": 9,
+    "by_type": {
+      "insight": 5,
+      "rich_format": 2,
+      "action_prompt": 1,
+      "sharing": 1
+    },
+    "by_motivation": {
+      "fear_based": 4,
+      "performance": 4,
+      "generic": 1
+    },
+    "medical_lifestyle_split": {
+      "medical": 3,
+      "lifestyle": 2,
+      "hybrid": 4,
+      "medical_percent": "33%",
+      "lifestyle_percent": "22%",
+      "hybrid_percent": "44%"
+    },
+    "scheduler_adherence": {
+      "phase": "Confirmed",
+      "expected_ratio": "90% confirmed variant (fear_based + performance mix)",
+      "actual_ratio": "89% confirmed variants (8/9 cards), 11% generic education (1/9 DYK)",
+      "compliant": true
+    }
+  }
+}

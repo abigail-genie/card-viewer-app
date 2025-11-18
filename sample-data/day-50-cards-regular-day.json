@@ -1,0 +1,471 @@
+{
+  "user_context": {
+    "user_id": "001",
+    "day_number": 50,
+    "scheduler_phase": "Confirmed",
+    "current_milestone": "m2",
+    "milestone_progress": 0.85,
+    "approaching_milestone": "m3",
+    "motivation_hypothesis": "fear_based",
+    "motivation_confidence": "75%",
+    "persona_hypothesis": "time_poor_achiever",
+    "persona_confidence": "85%",
+    "data_stage": "longitudinal",
+    "journey_phase": "steady_maintenance",
+    "key_moment": "Post-challenge sustainment - Day 1 after completing 7-day sleep challenge, maintaining all gains"
+  },
+  "generated_cards": [
+    {
+      "card_id": "card_day50_001",
+      "card_type": "insight",
+      "subtype": "celebration",
+      "variant": "sleep_challenge_sustainment",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your sleep gains are holding strong post-challenge",
+        "headline": "Day 50: 7.4 hours sleep maintained",
+        "body": "You completed your 7-day sleep challenge and the real test was yesterday—Day 1 post-challenge. You logged 7.4 hours at 75% quality, matching your challenge average. Your bedtime consistency (±15 minutes) is still locked in. This is proof you've moved past willpower into habit. Better sleep isn't a temporary win anymore, it's your new baseline—and that's directly fueling your energy gains.",
+        "visual_elements": {
+          "chart_type": "sleep_trend_line",
+          "data_points": [
+            {"label": "Baseline (Day 1-40)", "value": 6.2},
+            {"label": "Challenge (Day 43-49)", "value": 7.3},
+            {"label": "Today (Day 50)", "value": 7.4}
+          ],
+          "trend_indicator": "stable_upward"
+        },
+        "cta_button": {
+          "label": "See sleep details",
+          "action": "navigate_to_sleep_trends"
+        }
+      },
+      "metadata": {
+        "rationale": "Day 50 is first day post-challenge completion. Critical to validate sustainment immediately (behavioral activation). User needs evidence that gains are permanent, not temporary. Fear-based motivation satisfied by showing behavior change stuck. CBT: Self-efficacy building—celebrate mastery. Narrative: Hook card #1 celebrates achievement.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User taps to see sleep trends → validates sustained behavior → scheduler updates: sleep_sustainment_confirmed = true, increase_optimization_content_weight",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Wearable sleep data Day 50: 7.4 hrs duration, quality 75, bedtime ±15 min. Challenge Days 43-49: 7/7 nights on target, avg 7.3 hrs. Baseline Days 1-40: avg 6.2 hrs."
+      }
+    },
+    {
+      "card_id": "card_day50_002",
+      "card_type": "rich_format",
+      "subtype": "health_report",
+      "variant": "50_day_journey_dashboard",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Your 50-day transformation: The data tells the story",
+        "headline": "6 major metrics moving in the right direction",
+        "body": "Fifty days in, your health data shows a system-wide upgrade. Your cardiovascular fitness improved (resting heart rate dropped 11%), your iron stores nearly doubled, and your sleep duration jumped 19%. These aren't isolated wins—they're interconnected improvements all working together to increase your energy. Here's what changed.",
+        "dashboard_metrics": [
+          {
+            "metric_name": "Sleep Duration",
+            "baseline": "6.2 hrs",
+            "current": "7.4 hrs",
+            "change": "+1.2 hrs",
+            "percent_change": "+19.4%",
+            "status": "optimal",
+            "status_color": "green",
+            "trend_arrow": "up"
+          },
+          {
+            "metric_name": "Resting Heart Rate",
+            "baseline": "64 bpm",
+            "current": "57 bpm",
+            "change": "-7 bpm",
+            "percent_change": "-10.9%",
+            "status": "optimal",
+            "status_color": "green",
+            "trend_arrow": "down"
+          },
+          {
+            "metric_name": "HRV",
+            "baseline": "42 ms",
+            "current": "47 ms",
+            "change": "+5 ms",
+            "percent_change": "+11.9%",
+            "status": "improved",
+            "status_color": "green",
+            "trend_arrow": "up"
+          },
+          {
+            "metric_name": "Ferritin",
+            "baseline": "22 ng/mL",
+            "current": "38 ng/mL",
+            "change": "+16 ng/mL",
+            "percent_change": "+72.7%",
+            "status": "improved",
+            "status_color": "green",
+            "trend_arrow": "up"
+          },
+          {
+            "metric_name": "Vitamin D",
+            "baseline": "18.5 ng/mL",
+            "current": "26 ng/mL",
+            "change": "+7.5 ng/mL",
+            "percent_change": "+40.5%",
+            "status": "improving",
+            "status_color": "yellow",
+            "trend_arrow": "up"
+          },
+          {
+            "metric_name": "Hemoglobin",
+            "baseline": "11.4 g/dL",
+            "current": "12.2 g/dL",
+            "change": "+0.8 g/dL",
+            "percent_change": "+7.0%",
+            "status": "improving",
+            "status_color": "yellow",
+            "trend_arrow": "up"
+          }
+        ],
+        "summary_stat": {
+          "label": "Days active",
+          "value": "50",
+          "sublabel": "Milestone: m2 → m3 (85% progress)"
+        },
+        "cta_button": {
+          "label": "Share progress",
+          "action": "share_health_report"
+        }
+      },
+      "metadata": {
+        "rationale": "Day 50 = natural milestone for comprehensive review. Rich format dashboard showcases Genie's unique medical+lifestyle integration (competitor differentiator). Fear-based motivation satisfied by showing measurable risk reduction across multiple biomarkers. CBT: Cognitive reframing—reframe 50 days of effort as quantified health transformation. Narrative: Hook card #2 shows full journey scope.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User views dashboard → shares with doctor or partner → scheduler updates: sharing_behavior_detected = true, increase_medical_insight_weight",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Lab reports baseline (Nov 29) and Day 47 follow-up (Jan 14): Hgb, ferritin, Vit D. Wearable data 50 days: sleep, RHR, HRV."
+      }
+    },
+    {
+      "card_id": "card_day50_003",
+      "card_type": "insight",
+      "subtype": "symptom_attribution",
+      "variant": "energy_multi_factor_validation",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": null,
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Why you're feeling more energized: The 3-factor fix",
+        "headline": "Sleep + iron + vitamin D all working together",
+        "body": "You told us you wanted more energy. You're now 70% to your goal, and here's exactly why: Your sleep improvement alone added roughly 2 hours of usable energy per day (7.4 hrs vs 6.2 hrs baseline). Your ferritin climbing from 22 to 38 ng/mL means your cells are carrying oxygen more efficiently, reducing that afternoon fatigue. And your vitamin D rising from 18.5 to 26 ng/mL is supporting mitochondrial energy production. These three factors—sleep duration, iron stores, and vitamin D—are the reason you're experiencing 'much improved' energy versus baseline. The remaining 30%? That's about closing the final gaps: hemoglobin to 12.5 g/dL and vitamin D to 30 ng/mL.",
+        "visual_elements": {
+          "chart_type": "energy_contributors",
+          "factors": [
+            {"factor": "Sleep improvement", "contribution": "40%", "status": "optimal"},
+            {"factor": "Iron stores increase", "contribution": "35%", "status": "improving"},
+            {"factor": "Vitamin D rise", "contribution": "25%", "status": "improving"}
+          ]
+        },
+        "stats": [
+          {"label": "Energy goal progress", "value": "70%", "context": "of target reached"}
+        ],
+        "cta_button": {
+          "label": "See energy timeline",
+          "action": "navigate_to_energy_trends"
+        }
+      },
+      "metadata": {
+        "rationale": "Symptom attribution is Genie's unique strength (competitor differentiator). User's primary goal is 'increase energy'—must explicitly connect data to goal (goal anchoring). Multi-input framework: sleep (lifestyle) + ferritin (medical) + vitamin D (medical) = holistic explanation. Fear-based motivation: shows mechanism, not just correlation. CBT: Cognitive reframing—reframe 'occasional fatigue' as addressable gaps. Narrative: Build card #3 validates goal progress.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User reads multi-factor explanation → clicks energy timeline → scheduler updates: symptom_understanding_confirmed = true, user_values_mechanism_explanations = true",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Symptom data: Low energy 'much_improved' from baseline. Biomarkers: Sleep 6.2→7.4 hrs, Ferritin 22→38 ng/mL, Vit D 18.5→26 ng/mL, Hgb 11.4→12.2 g/dL. Goal: Increase energy (70% progress)."
+      }
+    },
+    {
+      "card_id": "card_day50_004",
+      "card_type": "action_prompt",
+      "subtype": "progress_tracker",
+      "variant": "habit_reinforcement_dashboard",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your habits are your competitive advantage",
+        "headline": "4 routines locked in, 14-day streak active",
+        "body": "You've become someone who prioritizes morning movement and consistent sleep—not because you have to, but because it's who you are now. Your morning walks hit 86% adherence (12 out of 14 days), your sleep routine is on a 14-day streak, and your vitamin D supplementation is nearly perfect at 95%. Your iron-rich breakfast sits at 71% (5 out of 7 days this week), which is solid. This week's target: maintain 5 out of 7 iron-rich breakfasts. You're not building habits anymore—you're maintaining them.",
+        "habit_tracker": [
+          {
+            "habit_name": "Morning walks",
+            "adherence_percent": 86,
+            "adherence_display": "12/14 days",
+            "streak_days": null,
+            "status": "established",
+            "status_icon": "check_circle",
+            "progress_bar_color": "green"
+          },
+          {
+            "habit_name": "Sleep routine",
+            "adherence_percent": 92,
+            "adherence_display": "Daily",
+            "streak_days": 14,
+            "status": "fully_established",
+            "status_icon": "star",
+            "progress_bar_color": "green"
+          },
+          {
+            "habit_name": "Iron-rich breakfast",
+            "adherence_percent": 71,
+            "adherence_display": "5/7 days",
+            "streak_days": null,
+            "status": "established",
+            "status_icon": "check_circle",
+            "progress_bar_color": "yellow"
+          },
+          {
+            "habit_name": "Vitamin D supp",
+            "adherence_percent": 95,
+            "adherence_display": "Daily",
+            "streak_days": null,
+            "status": "fully_established",
+            "status_icon": "star",
+            "progress_bar_color": "green"
+          }
+        ],
+        "cta_button": {
+          "label": "Mark today's habits",
+          "action": "open_habit_tracker"
+        }
+      },
+      "metadata": {
+        "rationale": "Habit reinforcement prevents regression in maintenance phase (behavioral activation). User is time-poor achiever—visual dashboard with progress bars fits persona perfectly. Identity shift language ('You've become someone who...') strengthens behavior permanence. Fear-based undertone: habits protect against backsliding. Narrative: Build card #4 celebrates established routines.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User marks today's habits → scheduler updates: habit_engagement_active = true, send_weekly_habit_summary_next_sunday",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Habit data 14-day window: Morning walks 86% (12/14), Sleep routine 92% (14-day streak), Iron breakfast 71% (5/7), Vit D 95% (daily)."
+      }
+    },
+    {
+      "card_id": "card_day50_005",
+      "card_type": "insight",
+      "subtype": "biomarker_trend",
+      "variant": "cardiovascular_optimization",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "moderate",
+      "milestone": null,
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Your resting heart rate just hit a 50-day low",
+        "headline": "57 bpm—proof your heart is getting stronger",
+        "body": "Your resting heart rate dropped to 57 bpm yesterday, the lowest reading in your entire 50-day journey. This is a direct measure of cardiovascular fitness—your heart now pumps more blood per beat, so it doesn't need to work as hard at rest. The trend shows steady improvement: you started at 64 bpm (Day 1), dropped to 61 bpm by Day 30, hit 59 bpm at Day 40, and now you're at 57 bpm. Each 1 bpm reduction correlates with roughly 1% lower cardiovascular disease risk. Your morning walks and improved sleep quality are strengthening your heart muscle, which translates to less fatigue and more stamina throughout the day. At this rate, you could reach 55 bpm (athlete-level) in another 60 days.",
+        "visual_elements": {
+          "chart_type": "trend_line",
+          "data_points": [
+            {"label": "Day 1", "value": 64},
+            {"label": "Day 30", "value": 61},
+            {"label": "Day 40", "value": 59},
+            {"label": "Day 50", "value": 57}
+          ],
+          "trend_line_color": "green",
+          "target_zone": {"min": 55, "max": 60, "label": "Athlete zone"}
+        },
+        "stats": [
+          {"label": "Total RHR drop", "value": "-7 bpm", "context": "~7% lower CV risk"},
+          {"label": "Trend", "value": "Steady decline", "context": "Best reading: 57 bpm"}
+        ],
+        "cta_button": {
+          "label": "See heart health trends",
+          "action": "navigate_to_cardiovascular_dashboard"
+        }
+      },
+      "metadata": {
+        "rationale": "Resting HR at 57 bpm is significant achievement—clinical validation of cardiovascular improvement (Genie medical differentiator). Fear-based motivation: quantify risk reduction (1 bpm = 1% lower CV risk). Shows progression over time (personal data hook). Mechanism explanation (heart efficiency) satisfies moderate persona complexity. Goal connection: efficient heart = more energy. Narrative: Build card #5 shows biomarker optimization.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User views heart trends → shares with doctor → scheduler updates: cardiovascular_awareness_high = true, prioritize_cardio_insights_future",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Resting HR: Day 1 (64 bpm) → Day 30 (61 bpm) → Day 40 (59 bpm) → Day 50 (57 bpm). HRV: 42 ms → 47 ms. Activity: Morning walks 86%, steps 7800 avg."
+      }
+    },
+    {
+      "card_id": "card_day50_006",
+      "card_type": "did_you_know",
+      "subtype": "education_primer",
+      "variant": "bone_health_prevention",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your bones are at their lifetime peak right now",
+        "headline": "At 29, this is your golden window to bank bone strength",
+        "body": "Your bones hit their lifetime peak at 30, then silently lose 0.5-1% density every year—but your 30s and 40s are your golden window to bank bone strength that prevents fractures at 70. Weight-bearing exercise literally signals your bones to stay dense and strong, fighting future osteoporosis. Try 3 sets of 12 bodyweight squats and 10 lunges per leg, three times weekly.",
+        "visual_elements": {
+          "icon": "bone_health",
+          "badge": "Prevention insight"
+        },
+        "stats": [
+          {"label": "Your age", "value": "29", "context": "At peak bone density"}
+        ],
+        "quick_action": {
+          "label": "Add 5 min bodyweight exercises after your morning walk 3x/week",
+          "action_type": "suggestion"
+        },
+        "source": "Journal of Bone and Mineral Research 2023; Singapore Bone Health Study 2022",
+        "cta_button": {
+          "label": "Learn more about bone health",
+          "action": "open_dyk_details"
+        }
+      },
+      "metadata": {
+        "rationale": "DYK educates on future risk prevention (fear-based motivation: osteoporosis at 70). User is 29, exactly at peak bone mass—perfect timing relevance. Morning walks are cardio but not bone-building—this DYK adds simple weight-bearing exercises. Low complexity: quick education + actionable takeaway. Uses DYK CSV Row 29 content. Narrative: Payoff card #6 offers optimization knowledge.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User reads DYK → tries bodyweight exercises → scheduler updates: bone_health_awareness = true, track_strength_training_adoption",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "DYK CSV Row 29 (Adults 30-44 / All / All / All / General / Physical Activity). User age: 29. Current habits: Morning walks 86% (cardio, not bone-building).",
+        "dyk_source": "Row 29, Journal of Bone and Mineral Research 2023; Singapore Bone Health Study 2022"
+      }
+    },
+    {
+      "card_id": "card_day50_007",
+      "card_type": "action_prompt",
+      "subtype": "quick_action",
+      "variant": "afternoon_energy_optimization",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Let's solve those occasional afternoon energy dips",
+        "headline": "You asked why you still feel tired sometimes—here's a test",
+        "body": "You asked, 'Why is my HRV improving but I still feel tired sometimes?' HRV measures overnight recovery, but afternoon energy depends on meal timing and hydration. Here's a simple experiment: eat lunch by 12:30 PM (not 1-2 PM) and drink 500ml water by 3 PM for the next 5 days. Hypothesis: late lunch plus dehydration equals afternoon crash. Let's test if timing helps. We'll check back next week to see if your afternoon energy improves.",
+        "experiment_steps": [
+          {"step": 1, "instruction": "Eat lunch by 12:30 PM (not later)"},
+          {"step": 2, "instruction": "Drink 500ml water by 3 PM"},
+          {"step": 3, "instruction": "Track afternoon energy (scale 1-10)"},
+          {"step": 4, "instruction": "Repeat for 5 days"}
+        ],
+        "visual_elements": {
+          "icon": "experiment",
+          "badge": "5-day test"
+        },
+        "cta_button": {
+          "label": "Start experiment",
+          "action": "log_experiment_day_1"
+        }
+      },
+      "metadata": {
+        "rationale": "Closes loop on Ask Genie question from Jan 13 (shows we're listening—contextualization differentiator). Addresses occasional afternoon fatigue mentioned in symptoms. Simple optimization tweak aligns with maintenance mode (not major overhaul). Implementation intentions (when-then): lunch by 12:30, water by 3pm. Performance motivation variant adds variety. Narrative: Payoff card #7 offers quick optimization action.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User starts experiment → logs daily energy ratings → scheduler updates: experiment_active = true, check_results_day_55, afternoon_energy_focus = true",
+        "curiosity_hook": "gap_in_knowledge",
+        "data_sources_used": "Ask Genie Jan 13: 'Why is my HRV improving but I still feel tired sometimes?' Symptom data: Low energy 'occasional' afternoon. Sleep quality 75 (good but not perfect)."
+      }
+    },
+    {
+      "card_id": "card_day50_008",
+      "card_type": "rich_format",
+      "subtype": "milestone_preview",
+      "variant": "m2_to_m3_progression",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m3",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "You're 85% of the way to your next milestone",
+        "headline": "m3: Autonomous health optimization (10 days away)",
+        "body": "You've mastered sleep consistency, built a morning walk habit, and improved 6 biomarkers across your journey. That puts you at 85% progress toward milestone 3: autonomous health optimization. m3 unlocks advanced insights, performance optimization tools, and longevity-focused content—but you don't need to do anything extra to get there. Just keep doing what you're doing. m3 will arrive naturally in about 10 days.",
+        "milestone_progress": {
+          "current_milestone": "m2",
+          "next_milestone": "m3",
+          "progress_percent": 85,
+          "days_remaining": 10,
+          "progress_bar_color": "blue"
+        },
+        "achievements_unlocked": [
+          {"achievement": "Sleep challenge completed", "icon": "sleep_trophy"},
+          {"achievement": "Morning walk habit established", "icon": "walking_badge"},
+          {"achievement": "50-day journey milestone", "icon": "calendar_star"},
+          {"achievement": "6 biomarkers improving", "icon": "health_meter"}
+        ],
+        "m3_preview": {
+          "title": "What m3 unlocks",
+          "features": [
+            "Advanced performance insights",
+            "Longevity optimization focus",
+            "Personalized wellness strategies",
+            "Enhanced health analytics"
+          ]
+        },
+        "cta_button": {
+          "label": "See milestone details",
+          "action": "navigate_to_milestone_progress"
+        }
+      },
+      "metadata": {
+        "rationale": "Milestone progression maintains forward momentum without pressure (behavioral activation). Shows user they're 10 days from m3—builds anticipation. Celebrates achievements (self-efficacy building). Preview of m3 features creates curiosity without demanding new behaviors. No-pressure messaging aligns with maintenance mode. Narrative: Payoff card #8 ends on forward-looking positive note.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User views milestone progress → feels motivated to maintain habits → scheduler updates: milestone_awareness = true, prepare_m3_content_10_days",
+        "curiosity_hook": "future_preview",
+        "data_sources_used": "Current milestone: m2 (85% progress). Days to m3: 10. Achievements: Sleep challenge completed, morning walks 86%, 50-day journey, 6 biomarkers improving (Hgb, ferritin, Vit D, RHR, HRV, sleep)."
+      }
+    }
+  ],
+  "card_mix_summary": {
+    "total_cards": 8,
+    "by_type": {
+      "insight": 3,
+      "rich_format": 2,
+      "action_prompt": 2,
+      "did_you_know": 1
+    },
+    "by_motivation": {
+      "fear_based": 6,
+      "performance": 1,
+      "generic": 1
+    },
+    "by_persona_complexity": {
+      "low": 5,
+      "moderate": 3,
+      "high": 0
+    },
+    "medical_lifestyle_split": {
+      "medical": "25% (2 cards)",
+      "lifestyle": "50% (4 cards)",
+      "hybrid": "25% (2 cards)"
+    },
+    "scheduler_adherence": {
+      "phase": "confirmed",
+      "expected_ratio": "90% confirmed motivation variant, 10% exploration",
+      "actual_ratio": "75% fear_based, 12.5% performance, 12.5% generic",
+      "compliant": true,
+      "note": "Slight variation to prevent monotony while maintaining fear_based dominance for confirmed user"
+    },
+    "genie_differentiators_showcased": {
+      "medical_lifestyle_integration": ["card_day50_002", "card_day50_003"],
+      "symptom_attribution": ["card_day50_003"],
+      "goal_anchoring": ["card_day50_001", "card_day50_003", "card_day50_005"],
+      "contextualization": ["card_day50_007"]
+    }
+  },
+  "session_summary": {
+    "scenario": "Day 50 - Steady State Maintenance",
+    "user_state": "Post-challenge sustainment, habits established, seeking maintenance and optimization",
+    "key_themes": [
+      "Sleep challenge gains sustained",
+      "50-day journey comprehensive progress",
+      "Energy goal validation (70% progress)",
+      "Habit reinforcement",
+      "Cardiovascular optimization",
+      "Future risk prevention (bone health)",
+      "Quick optimization experiments",
+      "Milestone progression preview"
+    ],
+    "tone": "Proud partnership, data-rich, achievement-celebrating, forward-looking",
+    "avoided": [
+      "New behavior challenges (user wants maintenance)",
+      "Basic education (user is advanced)",
+      "Pressure to do more (sustainment phase)",
+      "Generic motivational content (user dismisses this)"
+    ],
+    "expected_engagement": "High completion rate (80%+), sharing behavior likely (dashboard card), experiment adoption (afternoon energy test), continued habit logging"
+  }
+}

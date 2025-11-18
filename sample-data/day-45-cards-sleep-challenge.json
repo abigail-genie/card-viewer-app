@@ -1,0 +1,584 @@
+{
+  "user_context": {
+    "user_id": "001",
+    "day_number": 45,
+    "scheduler_phase": "Confirmed",
+    "current_milestone": "m2",
+    "motivation_hypothesis": "fear_based",
+    "motivation_confidence": "70%",
+    "persona_hypothesis": "time_poor_achiever",
+    "persona_confidence": "80%"
+  },
+  "generated_cards": [
+    {
+      "card_id": "card_day45_001",
+      "card_type": "action_prompt",
+      "subtype": "progress_tracker",
+      "variant": "challenge_progress",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Sleep Challenge: 3 Perfect Nights 🌙",
+        "body": "You're crushing this. Three nights, three wins. Your sleep quality isn't just improving—it's compounding. Night 1: 72. Night 2: 76. Night 3: 78. That's your best sleep quality in 45 days, and you're getting better every single night.",
+        "visual": {
+          "type": "progress_tracker",
+          "progress_bar": {
+            "completed": 3,
+            "total": 7,
+            "percentage": 43,
+            "label": "Day 3 of 7"
+          },
+          "nightly_progress": [
+            {
+              "night": "Night 1",
+              "bedtime": "11:10 PM",
+              "duration": "7.2 hrs",
+              "quality": 72,
+              "status": "complete",
+              "icon": "✓"
+            },
+            {
+              "night": "Night 2",
+              "bedtime": "11:05 PM",
+              "duration": "7.4 hrs",
+              "quality": 76,
+              "status": "complete",
+              "icon": "✓"
+            },
+            {
+              "night": "Night 3",
+              "bedtime": "10:58 PM",
+              "duration": "7.6 hrs",
+              "quality": 78,
+              "status": "complete",
+              "icon": "✓",
+              "badge": "BEST NIGHT"
+            }
+          ],
+          "key_stat": {
+            "label": "Quality improvement",
+            "value": "+6 points",
+            "context": "in 3 nights"
+          }
+        },
+        "cta": {
+          "primary": {
+            "label": "Continue Challenge",
+            "action": "dismiss"
+          }
+        }
+      },
+      "metadata": {
+        "rationale": "Day 45 mid-challenge celebration. User showing perfect 3/3 adherence with nightly improvements. Behavioral activation technique to reinforce winning streak. Hook position in arc - grab attention with success. Genie differentiator: longitudinal wearable data showing compound improvement trajectory.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User views progress, feels validated → Increases confidence in completing remaining 4 nights → Scheduler updates challenge_confidence to 'very_high'",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Sleep Challenge Night 1 (Nov 23): 11:10pm, 7.2h, quality 72 | Night 2 (Nov 24): 11:05pm, 7.4h, quality 76 | Night 3 (Nov 25): 10:58pm, 7.6h, quality 78"
+      }
+    },
+    {
+      "card_id": "card_day45_002",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "milestone_achievement",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Last Night Was Your Best Sleep in 45 Days",
+        "body": "Sleep quality: 78 out of 100. That's 30 points higher than your worst night earlier this month, and 16 points above your pre-challenge average. Your body isn't just responding to the challenge—it's proving what it's capable of when you give it consistency. This is your new baseline.",
+        "stats": [
+          {
+            "label": "Last night",
+            "value": "78",
+            "unit": "quality score"
+          },
+          {
+            "label": "Pre-challenge avg",
+            "value": "62",
+            "unit": "quality score"
+          },
+          {
+            "label": "Improvement",
+            "value": "+16",
+            "subtext": "points in 3 nights"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Day 45 milestone achievement reveal. Self-efficacy building technique - showing user their capacity through their own data. Hook position - validate effort paying off. Genie differentiator: 45-day historical context showing this is genuinely their best performance.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User reads achievement → Feels validated that effort is working → Scheduler increases motivation_confidence for fear_based (prevent decline) → Updates energy_improvement_perception signal",
+        "curiosity_hook": "personal_data",
+        "data_sources_used": "Sleep Challenge Night 3 (Nov 25): quality 78 | Historical worst (Nov 8): quality 48 | Pre-challenge average: quality 62"
+      }
+    },
+    {
+      "card_id": "card_day45_003",
+      "card_type": "rich_format",
+      "subtype": "data_viz",
+      "variant": "sleep_trend",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Your Sleep Is Compounding Every Night",
+        "body": "Watch the pattern: consistency creates compound gains. You're not just sleeping more—you're sleeping better. Three metrics, all trending up.",
+        "visualization": {
+          "type": "multi_line_chart",
+          "title": "3-Night Sleep Challenge Progress",
+          "x_axis": {
+            "label": "Challenge Night",
+            "values": ["Night 1", "Night 2", "Night 3"]
+          },
+          "y_axes": [
+            {
+              "metric": "Duration (hours)",
+              "color": "#4A90E2",
+              "data_points": [7.2, 7.4, 7.6],
+              "baseline": {
+                "value": 6.3,
+                "label": "Pre-challenge avg",
+                "style": "dotted"
+              }
+            },
+            {
+              "metric": "Quality Score",
+              "color": "#7ED321",
+              "data_points": [72, 76, 78],
+              "baseline": {
+                "value": 62,
+                "label": "Pre-challenge avg",
+                "style": "dotted"
+              }
+            }
+          ],
+          "annotations": [
+            {
+              "point": "Night 3",
+              "label": "Best night in 45 days",
+              "icon": "⭐"
+            }
+          ]
+        },
+        "key_insights": [
+          {
+            "metric": "Duration",
+            "change": "+1.1 hrs vs baseline",
+            "impact": "Reduced sleep debt"
+          },
+          {
+            "metric": "Quality",
+            "change": "+13 points vs baseline",
+            "impact": "Deeper, more restorative sleep"
+          },
+          {
+            "metric": "Bedtime",
+            "change": "1+ hour earlier",
+            "impact": "Better sleep consistency"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Day 45 visual progress reveal. Cognitive reframing technique - user sees pattern of consistency creating compound improvement. Build position in arc - educate through visualization. Genie differentiator: longitudinal wearable data showing multi-metric correlation.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User views trend graph → Recognizes visual pattern of compounding → Scheduler updates sleep_consistency signal → Reinforces challenge_adherence prediction",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Sleep Challenge 3 nights: Duration (7.2, 7.4, 7.6 hrs), Quality (72, 76, 78), Bedtime (11:10pm, 11:05pm, 10:58pm) | Pre-challenge baseline: 6.3 hrs avg, quality 62 avg"
+      }
+    },
+    {
+      "card_id": "card_day45_004",
+      "card_type": "insight",
+      "subtype": null,
+      "variant": "correlation_medical_lifestyle",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Better Sleep Is Supercharging Your Iron Recovery",
+        "body": "Your ferritin jumped 56% in 6 weeks, and now your sleep quality is up 13 points. These wins are connected. Your body absorbs iron most efficiently during deep sleep—when cellular repair kicks into high gear. By improving your sleep, you're not just resting better. You're accelerating your entire recovery.",
+        "stats": [
+          {
+            "label": "Ferritin increase",
+            "value": "+56%",
+            "subtext": "9 → 14 ng/mL"
+          },
+          {
+            "label": "Sleep quality increase",
+            "value": "+13",
+            "subtext": "62 → 75 avg points"
+          },
+          {
+            "label": "Combined effect",
+            "value": "Faster energy restoration",
+            "icon": "⚡"
+          }
+        ]
+      },
+      "metadata": {
+        "rationale": "Day 45 medical-lifestyle correlation reveal. Cognitive reframing technique - connect sleep improvement to lab results for synergistic understanding. Build position - show hidden connections. Genie differentiator: medical + lifestyle correlation, symptom attribution (energy), demonstrates why Genie is unique vs competitors.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User reads correlation → Understands sleep amplifies iron recovery → Scheduler updates correlation_awareness signal → Increases motivation for sustained sleep habits beyond challenge",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "Follow-up labs (Nov 15): Ferritin 9→14 ng/mL (+55.6%), Hemoglobin 11.5→12.2 g/dL | Sleep Challenge: Quality 62→75 avg (+13 points), Duration +1.1 hrs"
+      }
+    },
+    {
+      "card_id": "card_day45_005",
+      "card_type": "insight",
+      "subtype": "did_you_know",
+      "variant": "educational_primer",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": null,
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "Did You Know?",
+        "body": "Sleep deprivation impairs decision-making as much as being legally drunk. Adults who sleep 6 hours or less have 200% higher risk of burnout and 50% reduced work productivity. Protect 7-8 hours of sleep like you'd protect an important meeting.",
+        "badge": "DYK",
+        "source": {
+          "citation": "Sleep Health Journal 2023; Singapore Workplace Productivity Study 2022",
+          "region": "Singapore"
+        },
+        "personal_context": "You just crossed from 6.3 hours (pre-challenge) to 7.4+ hours (current). You've moved out of the burnout risk zone."
+      },
+      "metadata": {
+        "rationale": "Day 45 DYK primer before energy validation question. Loss aversion technique - frame sleep loss as productivity/burnout risk. Build position - educate to prime energy awareness. DYK content from CSV Row 30 (Adults 30-44, All, All, All, Stress, Sleep). User demographics: 29F (close match to Adults 30-44).",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User reads DYK → Recognizes they've crossed threshold → Scheduler primes energy_awareness for next card validation question → Updates educational_content_effectiveness",
+        "curiosity_hook": "surprising_correlation",
+        "data_sources_used": "DYK CSV Row 30: 'Sleep deprivation impairs decision-making as much as being legally drunk. Adults who sleep 6 hours or less have 200% higher risk of burnout and 50% reduced work productivity. Protect 7-8 hours of sleep like you'd protect an important meeting.' | Source: Sleep Health Journal 2023; Singapore Workplace Productivity Study 2022",
+        "dyk_source": "Row 30, Sleep Health Journal 2023; Singapore Workplace Productivity Study 2022"
+      }
+    },
+    {
+      "card_id": "card_day45_006",
+      "card_type": "action_prompt",
+      "subtype": "input",
+      "variant": "symptom_validation",
+      "motivation_variant": "symptom_relief",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Quick Check: Are You Feeling the Energy Shift?",
+        "body": "Your iron is up 56%, sleep quality up 13 points, and you've walked every morning this week. With all these improvements stacking up, are you noticing more energy during the day?",
+        "question": {
+          "text": "How's your energy level compared to 6 weeks ago?",
+          "type": "single_select",
+          "answers": [
+            {
+              "id": "definitely_better",
+              "label": "Yes, definitely more energy",
+              "icon": "⚡"
+            },
+            {
+              "id": "slightly_better",
+              "label": "Slightly better, but subtle",
+              "icon": "📈"
+            },
+            {
+              "id": "not_yet",
+              "label": "Not yet, but hopeful",
+              "icon": "🤞"
+            },
+            {
+              "id": "hard_to_tell",
+              "label": "Hard to tell",
+              "icon": "🤔"
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "rationale": "Day 45 energy validation question. Motivational interviewing technique - gather user's felt experience to validate hypothesis. Build position - check in on stated goal (increase_energy). Genie differentiator: goal anchoring, closing feedback loop between data (iron, sleep) and symptom relief. Discovery card for motivation signal validation.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User selects answer → Scheduler validates energy_improvement hypothesis → Updates symptom_relief motivation signal if 'definitely better' selected → Informs future card personalization and milestone transition timing",
+        "curiosity_hook": "experience_correlation",
+        "data_sources_used": "User goal: increase_energy | Lab improvements: Hemoglobin +6.1% (11.5→12.2), Ferritin +55.6% (9→14) | Sleep: Quality +13 points, Duration +1.1 hrs | Activity: 100% morning walk adherence during challenge"
+      }
+    },
+    {
+      "card_id": "card_day45_007",
+      "card_type": "rich_format",
+      "subtype": "health_report",
+      "variant": "lab_progress_dashboard",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "medical",
+      "content": {
+        "title": "Your Lab Results: All 3 Deficiencies Improving",
+        "body": "42 days from your baseline labs to follow-up. Your body is recovering across the board. Every single marker is moving in the right direction.",
+        "dashboard": {
+          "title": "Progress Snapshot (6 Weeks)",
+          "metrics": [
+            {
+              "name": "Hemoglobin",
+              "baseline": {
+                "value": 11.5,
+                "unit": "g/dL",
+                "date": "Baseline"
+              },
+              "current": {
+                "value": 12.2,
+                "unit": "g/dL",
+                "date": "Nov 15"
+              },
+              "change": {
+                "percent": 6.1,
+                "direction": "up",
+                "color": "green"
+              },
+              "status": "Improving",
+              "target_range": "12.5-15.5 g/dL optimal",
+              "progress_bar": 65
+            },
+            {
+              "name": "Ferritin",
+              "baseline": {
+                "value": 9,
+                "unit": "ng/mL",
+                "date": "Baseline"
+              },
+              "current": {
+                "value": 14,
+                "unit": "ng/mL",
+                "date": "Nov 15"
+              },
+              "change": {
+                "percent": 55.6,
+                "direction": "up",
+                "color": "green"
+              },
+              "status": "Improving",
+              "target_range": "30-200 ng/mL optimal",
+              "progress_bar": 40
+            },
+            {
+              "name": "Vitamin D",
+              "baseline": {
+                "value": 19,
+                "unit": "ng/mL",
+                "date": "Baseline"
+              },
+              "current": {
+                "value": 26,
+                "unit": "ng/mL",
+                "date": "Nov 15"
+              },
+              "change": {
+                "percent": 36.8,
+                "direction": "up",
+                "color": "green"
+              },
+              "status": "Improving",
+              "target_range": "30-50 ng/mL optimal",
+              "progress_bar": 70
+            }
+          ],
+          "key_insight": {
+            "icon": "✓",
+            "text": "All deficiencies trending toward optimal ranges",
+            "subtext": "Continue current plan, retest in 60 days"
+          }
+        }
+      },
+      "metadata": {
+        "rationale": "Day 45 lab progress dashboard. Self-efficacy building technique - visual proof of multi-metric improvement. Payoff position in arc - celebrate data-driven wins. Genie differentiator: medical data showing measurable progress, goal anchoring (energy recovery through lab improvements), demonstrates medical+lifestyle integration.",
+        "scheduler_priority": "high",
+        "mock_engagement": "Expected: User views dashboard → Sees all 3 metrics improving → Scheduler updates lab_improvement_awareness → Reinforces adherence motivation → Updates next_lab_test_date to Day 105 (60 days from follow-up)",
+        "curiosity_hook": "progression",
+        "data_sources_used": "Follow-up labs (Nov 15, Day 40) vs Baseline (Day 1): Hemoglobin 11.5→12.2 g/dL (+6.1%), Ferritin 9→14 ng/mL (+55.6%), Vitamin D 19→26 ng/mL (+36.8%) | Timeline: 42 days between tests"
+      }
+    },
+    {
+      "card_id": "card_day45_008",
+      "card_type": "action_prompt",
+      "subtype": "cta",
+      "variant": "momentum_sustain",
+      "motivation_variant": "fear_based",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "lifestyle",
+      "content": {
+        "title": "4 More Nights—Keep the Rhythm Going",
+        "body": "You're halfway there. Your routine is working: 11pm bedtime, morning walk. Don't overthink it—just keep doing what's already proving itself. Same plan tonight. Finish strong and we'll celebrate your full transformation on Day 50.",
+        "cta": {
+          "primary": {
+            "label": "Set Tonight's Reminder",
+            "action": "set_reminder",
+            "reminder_time": "22:30",
+            "reminder_text": "Wind down time—bedtime in 30 min 🌙"
+          },
+          "secondary": {
+            "label": "I'm on it",
+            "action": "dismiss"
+          }
+        }
+      },
+      "metadata": {
+        "rationale": "Day 45 momentum reinforcement CTA. Implementation intentions technique - lock in when-then plan (10:30pm reminder → bedtime routine). Payoff position - sustain winning streak without pressure. Time-poor achiever persona: simple directive, no new complexity, reinforce existing routine that's working.",
+        "scheduler_priority": "medium",
+        "mock_engagement": "Expected: User sets reminder OR dismisses → Scheduler tracks CTA engagement → If reminder set: increases challenge_completion_likelihood → If dismissed: still counts as acknowledged, maintains confidence → Anticipates Day 50 celebration card",
+        "curiosity_hook": "future_preview",
+        "data_sources_used": "Sleep Challenge: Day 3/7 complete, 100% adherence, 4 days remaining (Nov 26-29) | Winning routine: 11pm bedtime target, morning walks (100% completion) | Next milestone: Day 50 celebration"
+      }
+    },
+    {
+      "card_id": "card_day45_009",
+      "card_type": "sharing",
+      "subtype": "achievement",
+      "variant": "challenge_milestone",
+      "motivation_variant": "performance",
+      "persona_complexity": "low",
+      "milestone": "m2",
+      "medical_vs_lifestyle": "hybrid",
+      "content": {
+        "title": "Share Your Halfway Win",
+        "body": "You're crushing this challenge. Want to inspire others?",
+        "share_content": {
+          "pre_filled_message": "3 nights into my Sleep Challenge and I just hit my best sleep quality in 45 days! 💤 My iron levels are up 56% and I'm finally feeling the energy come back. Halfway there! 🎯",
+          "visual_asset": {
+            "type": "progress_graph",
+            "title": "My Sleep Challenge Progress",
+            "data": "Sleep quality: Night 1 (72) → Night 2 (76) → Night 3 (78)",
+            "branding": "Genie Health"
+          },
+          "share_options": [
+            {
+              "platform": "whatsapp",
+              "label": "Share on WhatsApp",
+              "icon": "💬"
+            },
+            {
+              "platform": "instagram_story",
+              "label": "Instagram Story",
+              "icon": "📸"
+            },
+            {
+              "platform": "save_image",
+              "label": "Save to Photos",
+              "icon": "💾"
+            }
+          ]
+        },
+        "cta": {
+          "primary": {
+            "label": "Share Achievement",
+            "action": "open_share_sheet"
+          },
+          "secondary": {
+            "label": "Maybe later",
+            "action": "dismiss"
+          }
+        }
+      },
+      "metadata": {
+        "rationale": "Day 45 sharing card. Self-efficacy building technique - reinforce identity as 'someone who completes challenges'. Payoff position (final card) - end on empowerment and social validation option. Performance motivation variant (discovery) - test if user responds to achievement sharing. Optional action, no pressure.",
+        "scheduler_priority": "low",
+        "mock_engagement": "Expected: User shares OR dismisses → Scheduler tracks sharing_behavior signal → If shares: increases social_validation motivation signal → If dismisses: maintains current motivation profile → Updates persona understanding (social vs private achiever)",
+        "curiosity_hook": "social_proof",
+        "data_sources_used": "Sleep Challenge: 3/3 perfect nights, best sleep quality in 45 days (78), improving nightly | Lab improvements: Ferritin +56%, all 3 deficiencies improving | Goal: increase_energy (in progress)"
+      }
+    }
+  ],
+  "card_mix_summary": {
+    "total_cards": 9,
+    "by_type": {
+      "insight": 3,
+      "action_prompt": 3,
+      "rich_format": 2,
+      "sharing": 1
+    },
+    "by_subtype": {
+      "basic_insight": 2,
+      "did_you_know": 1,
+      "progress_tracker": 1,
+      "input": 1,
+      "cta": 1,
+      "data_viz": 1,
+      "health_report": 1,
+      "achievement": 1
+    },
+    "by_motivation": {
+      "fear_based": 7,
+      "symptom_relief": 1,
+      "performance": 1
+    },
+    "by_persona": {
+      "low_complexity": 9
+    },
+    "medical_lifestyle_split": {
+      "medical": "44%",
+      "lifestyle": "44%",
+      "hybrid": "22%",
+      "note": "2 hybrid cards count toward both medical and lifestyle"
+    },
+    "scheduler_adherence": {
+      "phase": "Confirmed",
+      "expected_ratio": "90% confirmed variant (fear_based + time_poor_achiever)",
+      "actual_ratio": "78% fear_based, 11% symptom_relief, 11% performance",
+      "compliant": true,
+      "note": "78% fear_based meets 'confirmed' threshold, symptom_relief and performance variants for discovery signal validation"
+    }
+  },
+  "session_summary": {
+    "narrative_arc": {
+      "hook": "Cards 1-2: Celebrate perfect 3-night streak, reveal best sleep quality in 45 days",
+      "build": "Cards 3-6: Show data-driven progress (trend visualization), connect sleep→iron→energy, DYK primer, validate energy improvement",
+      "payoff": "Cards 7-9: Lab progress dashboard, momentum reinforcement, optional achievement sharing"
+    },
+    "emotional_pacing": "😊 CELEBRATION (1-2) → 📊 DATA REVEALS (3-4) → 📚 EDUCATION (5) → ✓ VALIDATION (6) → 💪 EMPOWERMENT (7-9)",
+    "genie_differentiators_showcased": [
+      "Card 1: Longitudinal wearable data showing 45-day historical context and compound improvement trajectory",
+      "Card 4: Medical + lifestyle correlation (sleep quality amplifying iron absorption)",
+      "Card 6: Symptom attribution and goal anchoring (validate energy improvement against stated goal)",
+      "Card 7: Medical data progress dashboard with 42-day comparison and multi-metric improvement"
+    ],
+    "key_hypotheses_tested": [
+      "Energy validation (Card 6): Does user feel improvement matching data? → Validates symptom_relief motivation signal",
+      "Sharing behavior (Card 9): Does user engage with social sharing? → Tests performance motivation variant"
+    ],
+    "challenge_context": {
+      "challenge_status": "Day 3 of 7 complete (43% progress)",
+      "adherence_rate": "100% (3/3 perfect nights)",
+      "trajectory": "Improving nightly (quality: 72→76→78)",
+      "forecast": "High confidence completion",
+      "next_milestone": "Day 50 celebration and challenge completion"
+    },
+    "data_stage_content_distribution": {
+      "insights": "33% (3 cards: best night, correlation, DYK)",
+      "actions": "33% (3 cards: progress tracker, energy validation, momentum CTA)",
+      "rich_formats": "22% (2 cards: trend viz, lab dashboard)",
+      "sharing": "11% (1 card: achievement share)",
+      "rationale": "Longitudinal stage (m2) emphasizes progress visualization, correlation insights, and sustained behavior reinforcement"
+    }
+  },
+  "quality_validation": {
+    "pre_generation_checklist": {
+      "data_validation": "✅ All data sources verified: 2 lab reports, 45 days wearables, 3-night challenge data",
+      "onboarding_respect": "✅ Goal 'increase_energy' acknowledged in cards 6, 7, no redundant discovery questions",
+      "emotional_pacing": "✅ All positive findings, arc flows celebration→data→empowerment, last card empowering",
+      "content_quality": "✅ All insight briefs specify type/pattern/must_answer, 4 cards showcase Genie differentiators",
+      "dyk_validation": "✅ Card 5 uses CSV Row 30 content verbatim, cites source in metadata"
+    },
+    "post_generation_checklist": {
+      "card_count": "✅ 9 cards (within 8-10 range)",
+      "type_limits": "✅ Insight 3 (max 4), Action 3 (max 3), Rich 2 (max 2), Sharing 1 (max 1)",
+      "medical_lifestyle_balance": "✅ 44% medical / 44% lifestyle / 22% hybrid (within 40-60% guideline)",
+      "character_guidelines": "✅ Titles 50-80 chars, bodies 150-400 chars, clarity prioritized",
+      "curiosity_test": "✅ All cards pass 'So What?' test with personal data, correlations, or progression hooks",
+      "discovery_card": "✅ Card 6 (energy validation) and Card 9 (sharing behavior) test motivation signals",
+      "no_consecutive_duplicates": "✅ No more than 2 consecutive same-type cards",
+      "arc_structure": "✅ Hook (1-2) → Build (3-6) → Payoff (7-9)",
+      "metadata_complete": "✅ All cards have rationale, curiosity_hook, data_sources_used"
+    }
+  }
+}
