@@ -257,7 +257,6 @@ def render_card(card, index):
         # Stats variations
         valid_stats = [stat for stat in stats if stat.get('label') or stat.get('value')] if stats else []
         if valid_stats:
-            st.markdown('<div class="section-box">', unsafe_allow_html=True)
             for stat in valid_stats:
                 cols = st.columns([2, 1, 2])
                 with cols[0]:
@@ -270,7 +269,6 @@ def render_card(card, index):
                     caption_text = f"{context} {visual}".strip()
                     if caption_text:
                         st.caption(caption_text)
-            st.markdown('</div>', unsafe_allow_html=True)
 
         # Primary & Supporting stats
         has_primary = primary_stat and (primary_stat.get('label') or primary_stat.get('value'))
@@ -303,7 +301,6 @@ def render_card(card, index):
         # Dashboard metrics (rich format)
         valid_metrics = [m for m in dashboard_metrics if m.get('metric_name') or m.get('current')] if dashboard_metrics else []
         if valid_metrics:
-            st.markdown('<div class="section-box">', unsafe_allow_html=True)
             st.markdown("**Health Metrics Dashboard**")
             for metric in valid_metrics:
                 cols = st.columns([3, 1, 1, 1, 1])
@@ -322,7 +319,6 @@ def render_card(card, index):
                     caption_text = f"{percent} {trend}".strip()
                     if caption_text:
                         st.caption(caption_text)
-            st.markdown('</div>', unsafe_allow_html=True)
 
         # Visual elements note
         if visual_elements and isinstance(visual_elements, dict):
@@ -374,7 +370,6 @@ def render_card(card, index):
         # Stats container
         valid_stats_array = [stat for stat in stats_array if stat.get('value') or stat.get('label')] if stats_array else []
         if valid_stats_array:
-            st.markdown('<div class="stats-container">', unsafe_allow_html=True)
             if stats_container and isinstance(stats_container, dict) and stats_container.get('title'):
                 st.markdown(f"**{stats_container['title']}**")
 
@@ -382,7 +377,6 @@ def render_card(card, index):
             for idx, stat in enumerate(valid_stats_array):
                 with cols[idx]:
                     st.markdown(f'<div class="stat-item"><div class="stat-value">{stat.get("value", "")}</div><div class="stat-label">{stat.get("label", "")}</div></div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
 
         # Interactive element
         if interactive and interactive.get('type'):
