@@ -206,10 +206,6 @@ def render_card(card, index):
 
     # Render card
     with st.container():
-        # CONTENT BOX - Start wrapper
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown('<div style="border: 3px solid #333; padding: 24px; margin-bottom: 16px; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">', unsafe_allow_html=True)
-
         # Extract last 3 digits from card_id for header
         card_id_str = str(card.get('card_id', ''))
         if card_id_str:
@@ -407,9 +403,6 @@ def render_card(card, index):
         if source_citation:
             st.caption(f"Source: {source_citation}")
 
-        # Close content box
-        st.markdown('</div>', unsafe_allow_html=True)
-
         # METADATA - COLLAPSIBLE
         with st.expander("📋 METADATA", expanded=False):
             # Build metadata HTML
@@ -467,8 +460,8 @@ def render_card(card, index):
             metadata_html += '</div>'
             st.markdown(metadata_html, unsafe_allow_html=True)
 
-        # Close card
-        st.markdown('</div>', unsafe_allow_html=True)
+        # Add spacing between cards
+        st.markdown("---")
 
 # Main content
 if uploaded_files:
