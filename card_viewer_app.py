@@ -247,77 +247,81 @@ def render_card(card, index):
 
         # Answer choices (for action_prompt cards)
         if answer_choices:
-            st.markdown('<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0;">', unsafe_allow_html=True)
+            choices_html = '<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0;">'
             for choice in answer_choices:
                 choice_label = choice if isinstance(choice, str) else choice.get('label', '')
-                st.markdown(f'<div style="padding: 8px; border: 1px solid #ccc; margin: 8px 0; cursor: pointer;">☐ {choice_label}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+                choices_html += f'<div style="padding: 8px; border: 1px solid #ccc; margin: 8px 0; cursor: pointer;">☐ {choice_label}</div>'
+            choices_html += '</div>'
+            st.markdown(choices_html, unsafe_allow_html=True)
 
         # Stats variations
-        if stats and any(stat.get('label') or stat.get('value') for stat in stats):
+        valid_stats = [stat for stat in stats if stat.get('label') or stat.get('value')] if stats else []
+        if valid_stats:
             st.markdown('<div class="section-box">', unsafe_allow_html=True)
-            for stat in stats:
-                if stat.get('label') or stat.get('value'):
-                    cols = st.columns([2, 1, 2])
-                    with cols[0]:
-                        st.markdown(f"**{stat.get('label', '')}**")
-                    with cols[1]:
-                        st.markdown(f"<div style='font-size: 1.2em; font-weight: bold;'>{stat.get('value', '')}</div>", unsafe_allow_html=True)
-                    with cols[2]:
-                        context = stat.get('context', '')
-                        visual = stat.get('visual', '')
-                        caption_text = f"{context} {visual}".strip()
-                        if caption_text:
-                            st.caption(caption_text)
+            for stat in valid_stats:
+                cols = st.columns([2, 1, 2])
+                with cols[0]:
+                    st.markdown(f"**{stat.get('label', '')}**")
+                with cols[1]:
+                    st.markdown(f"<div style='font-size: 1.2em; font-weight: bold;'>{stat.get('value', '')}</div>", unsafe_allow_html=True)
+                with cols[2]:
+                    context = stat.get('context', '')
+                    visual = stat.get('visual', '')
+                    caption_text = f"{context} {visual}".strip()
+                    if caption_text:
+                        st.caption(caption_text)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Primary & Supporting stats
         has_primary = primary_stat and (primary_stat.get('label') or primary_stat.get('value'))
         has_supporting = supporting_stat and (supporting_stat.get('label') or supporting_stat.get('value'))
         if has_primary or has_supporting:
-            st.markdown('<div class="section-box">', unsafe_allow_html=True)
+            stats_html = '<div class="section-box">'
             if has_primary:
-                st.markdown(f"**{primary_stat.get('label', '')}:** {primary_stat.get('value', '')}")
-                if primary_stat.get('context'):
-                    st.caption(primary_stat['context'])
+                stats_html += f"<p><strong>{primary_stat.get('label', '')}:</strong> {primary_stat.get('value', '')}</p>"
             if has_supporting:
-                st.markdown(f"**{supporting_stat.get('label', '')}:** {supporting_stat.get('value', '')}")
-                if supporting_stat.get('context'):
-                    st.caption(supporting_stat['context'])
-            st.markdown('</div>', unsafe_allow_html=True)
+                stats_html += f"<p><strong>{supporting_stat.get('label', '')}:</strong> {supporting_stat.get('value', '')}</p>"
+            stats_html += '</div>'
+            st.markdown(stats_html, unsafe_allow_html=True)
+            if has_primary and primary_stat.get('context'):
+                st.caption(primary_stat['context'])
+            if has_supporting and supporting_stat.get('context'):
+                st.caption(supporting_stat['context'])
 
         # Supporting data
-        if supporting_data and any(data.get('label') or data.get('value') for data in supporting_data):
-            st.markdown('<div class="section-box">', unsafe_allow_html=True)
-            for data in supporting_data:
-                if data.get('label') or data.get('value'):
-                    st.markdown(f"**{data.get('label', '')}:** {data.get('value', '')}")
-                    if data.get('context'):
-                        st.caption(data['context'])
-            st.markdown('</div>', unsafe_allow_html=True)
+        valid_supporting = [data for data in supporting_data if data.get('label') or data.get('value')] if supporting_data else []
+        if valid_supporting:
+            data_html = '<div class="section-box">'
+            for data in valid_supporting:
+                data_html += f"<p><strong>{data.get('label', '')}:</strong> {data.get('value', '')}</p>"
+            data_html += '</div>'
+            st.markdown(data_html, unsafe_allow_html=True)
+            for data in valid_supporting:
+                if data.get('context'):
+                    st.caption(data['context'])
 
         # Dashboard metrics (rich format)
-        if dashboard_metrics and any(metric.get('metric_name') or metric.get('current') for metric in dashboard_metrics):
+        valid_metrics = [m for m in dashboard_metrics if m.get('metric_name') or m.get('current')] if dashboard_metrics else []
+        if valid_metrics:
             st.markdown('<div class="section-box">', unsafe_allow_html=True)
             st.markdown("**Health Metrics Dashboard**")
-            for metric in dashboard_metrics:
-                if metric.get('metric_name') or metric.get('current'):
-                    cols = st.columns([3, 1, 1, 1, 1])
-                    with cols[0]:
-                        st.markdown(f"**{metric.get('metric_name', '')}**")
-                    with cols[1]:
-                        st.metric("Baseline", metric.get('baseline', ''))
-                    with cols[2]:
-                        st.metric("Current", metric.get('current', ''))
-                    with cols[3]:
-                        change = metric.get('change', '')
-                        st.metric("Change", change)
-                    with cols[4]:
-                        percent = metric.get('percent_change', '')
-                        trend = metric.get('trend_arrow', '')
-                        caption_text = f"{percent} {trend}".strip()
-                        if caption_text:
-                            st.caption(caption_text)
+            for metric in valid_metrics:
+                cols = st.columns([3, 1, 1, 1, 1])
+                with cols[0]:
+                    st.markdown(f"**{metric.get('metric_name', '')}**")
+                with cols[1]:
+                    st.metric("Baseline", metric.get('baseline', ''))
+                with cols[2]:
+                    st.metric("Current", metric.get('current', ''))
+                with cols[3]:
+                    change = metric.get('change', '')
+                    st.metric("Change", change)
+                with cols[4]:
+                    percent = metric.get('percent_change', '')
+                    trend = metric.get('trend_arrow', '')
+                    caption_text = f"{percent} {trend}".strip()
+                    if caption_text:
+                        st.caption(caption_text)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Visual elements note
@@ -326,10 +330,9 @@ def render_card(card, index):
             data_points = visual_elements.get('data_points', [])
             if chart_type:
                 st.markdown(f'<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0; background: #fafafa;">📊 Chart: {chart_type}</div>', unsafe_allow_html=True)
-                if data_points:
-                    for dp in data_points:
-                        if dp.get('label') or dp.get('value'):
-                            st.caption(f"{dp.get('label', '')}: {dp.get('value', '')}")
+                valid_points = [dp for dp in data_points if dp.get('label') or dp.get('value')] if data_points else []
+                for dp in valid_points:
+                    st.caption(f"{dp.get('label', '')}: {dp.get('value', '')}")
 
         # Accordion items
         if accordion_items:
@@ -369,17 +372,16 @@ def render_card(card, index):
                     st.markdown(f"- {takeaway}")
 
         # Stats container
-        if stats_array and any(stat.get('value') or stat.get('label') for stat in stats_array):
+        valid_stats_array = [stat for stat in stats_array if stat.get('value') or stat.get('label')] if stats_array else []
+        if valid_stats_array:
             st.markdown('<div class="stats-container">', unsafe_allow_html=True)
             if stats_container and isinstance(stats_container, dict) and stats_container.get('title'):
                 st.markdown(f"**{stats_container['title']}**")
 
-            valid_stats = [stat for stat in stats_array if stat.get('value') or stat.get('label')]
-            if valid_stats:
-                cols = st.columns(len(valid_stats))
-                for idx, stat in enumerate(valid_stats):
-                    with cols[idx]:
-                        st.markdown(f'<div class="stat-item"><div class="stat-value">{stat.get("value", "")}</div><div class="stat-label">{stat.get("label", "")}</div></div>', unsafe_allow_html=True)
+            cols = st.columns(len(valid_stats_array))
+            for idx, stat in enumerate(valid_stats_array):
+                with cols[idx]:
+                    st.markdown(f'<div class="stat-item"><div class="stat-value">{stat.get("value", "")}</div><div class="stat-label">{stat.get("label", "")}</div></div>', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Interactive element
@@ -416,60 +418,60 @@ def render_card(card, index):
 
         # METADATA - COLLAPSIBLE
         with st.expander("📋 METADATA", expanded=False):
-            st.markdown('<div style="border: 2px solid #666; padding: 20px; background: #fafafa;">', unsafe_allow_html=True)
+            # Build metadata HTML
+            metadata_html = '<div style="border: 2px solid #666; padding: 20px; background: #fafafa;">'
 
             # Card identification
             if card.get('card_id'):
-                st.markdown(f"**Card ID:** {card['card_id']}")
+                metadata_html += f"<p><strong>Card ID:</strong> {card['card_id']}</p>"
 
             # Card type info
-            st.markdown(f"**Card Type:** {card_type}")
+            metadata_html += f"<p><strong>Card Type:</strong> {card_type}</p>"
             if card.get('subtype'):
-                st.markdown(f"**Subtype:** {card['subtype']}")
+                metadata_html += f"<p><strong>Subtype:</strong> {card['subtype']}</p>"
             if card.get('variant'):
-                st.markdown(f"**Variant:** {card['variant']}")
+                metadata_html += f"<p><strong>Variant:</strong> {card['variant']}</p>"
 
             # Personalization
-            st.markdown(f"**Motivation Variant:** {motivation_class}")
-            st.markdown(f"**Medical vs Lifestyle:** {category_class.replace('_', ' ')}")
+            metadata_html += f"<p><strong>Motivation Variant:</strong> {motivation_class}</p>"
+            metadata_html += f"<p><strong>Medical vs Lifestyle:</strong> {category_class.replace('_', ' ')}</p>"
             if complexity:
-                st.markdown(f"**Persona Complexity:** {complexity}")
+                metadata_html += f"<p><strong>Persona Complexity:</strong> {complexity}</p>"
 
             # Milestone
             if card.get('milestone'):
-                st.markdown(f"**Milestone:** {card['milestone']}")
+                metadata_html += f"<p><strong>Milestone:</strong> {card['milestone']}</p>"
 
             # Metadata details
             metadata = card.get('metadata', {})
             if metadata:
-                st.markdown("---")
-                st.markdown("**Detailed Metadata:**")
+                metadata_html += "<hr><p><strong>Detailed Metadata:</strong></p>"
 
                 if metadata.get('rationale'):
-                    st.markdown(f"**Rationale:** {metadata['rationale']}")
+                    metadata_html += f"<p><strong>Rationale:</strong> {metadata['rationale']}</p>"
 
                 if metadata.get('scheduler_priority'):
-                    st.markdown(f"**Scheduler Priority:** {metadata['scheduler_priority']}")
+                    metadata_html += f"<p><strong>Scheduler Priority:</strong> {metadata['scheduler_priority']}</p>"
 
                 if metadata.get('mock_engagement'):
-                    st.markdown(f"**Mock Engagement:** {metadata['mock_engagement']}")
+                    metadata_html += f"<p><strong>Mock Engagement:</strong> {metadata['mock_engagement']}</p>"
 
                 if metadata.get('curiosity_hook'):
-                    st.markdown(f"**Curiosity Hook:** {metadata['curiosity_hook']}")
+                    metadata_html += f"<p><strong>Curiosity Hook:</strong> {metadata['curiosity_hook']}</p>"
 
                 if metadata.get('data_sources_used'):
-                    st.markdown(f"**Data Sources Used:** {metadata['data_sources_used']}")
+                    metadata_html += f"<p><strong>Data Sources Used:</strong> {metadata['data_sources_used']}</p>"
 
                 if metadata.get('dyk_source'):
-                    st.markdown(f"**DYK Source:** {metadata['dyk_source']}")
+                    metadata_html += f"<p><strong>DYK Source:</strong> {metadata['dyk_source']}</p>"
 
                 # Show any other metadata fields
                 for key, value in metadata.items():
                     if key not in ['rationale', 'scheduler_priority', 'mock_engagement', 'curiosity_hook', 'data_sources_used', 'dyk_source']:
-                        st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
+                        metadata_html += f"<p><strong>{key.replace('_', ' ').title()}:</strong> {value}</p>"
 
-            # Close metadata box
-            st.markdown('</div>', unsafe_allow_html=True)
+            metadata_html += '</div>'
+            st.markdown(metadata_html, unsafe_allow_html=True)
 
         # Close card
         st.markdown('</div>', unsafe_allow_html=True)
