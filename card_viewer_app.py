@@ -513,23 +513,44 @@ if uploaded_files:
             st.error(f"Error loading file: {str(e)}")
     else:
         # Multiple files - use tabs
-        tab_names = [f.name.replace('.json', '').replace('-', ' ').title() for f in uploaded_files]
+        # First, load all files into memory to avoid file pointer issues
+        all_file_data = []
+        for uploaded_file in uploaded_files:
+            try:
+                uploaded_file.seek(0)
+                data = json.load(uploaded_file)
+                all_file_data.append({
+                    'name': uploaded_file.name,
+                    'data': data,
+                    'success': True
+                })
+            except Exception as e:
+                all_file_data.append({
+                    'name': uploaded_file.name,
+                    'error': str(e),
+                    'success': False
+                })
+
+        # Create tabs
+        tab_names = [file_info['name'].replace('.json', '').replace('-', ' ').title() for file_info in all_file_data]
         tabs = st.tabs(tab_names)
 
-        for tab, uploaded_file in zip(tabs, uploaded_files):
+        # Display each file in its tab
+        for tab, file_info in zip(tabs, all_file_data):
             with tab:
+                if not file_info['success']:
+                    st.error(f"Error loading {file_info['name']}: {file_info['error']}")
+                    continue
+
                 try:
-                    # Reset file pointer to beginning
-                    uploaded_file.seek(0)
-                    # Load JSON
-                    data = json.load(uploaded_file)
+                    data = file_info['data']
 
                     # Extract cards
                     cards = data.get('generated_cards') or data.get('cards', [])
                     user_context = data.get('user_context', {})
 
                     if not cards:
-                        st.warning(f"No cards found in {uploaded_file.name}")
+                        st.warning(f"No cards found in {file_info['name']}")
                     else:
                         # Display stats
                         st.markdown("---")
@@ -557,9 +578,9 @@ if uploaded_files:
                             render_card(card, idx)
 
                 except json.JSONDecodeError:
-                    st.error(f"Invalid JSON in {uploaded_file.name}. Please upload a valid JSON file.")
+                    st.error(f"Invalid JSON in {file_info['name']}. Please upload a valid JSON file.")
                 except Exception as e:
-                    st.error(f"Error loading {uploaded_file.name}: {str(e)}")
+                    st.error(f"Error loading {file_info['name']}: {str(e)}")
 else:
     st.info("👆 Upload JSON files to view the cards")
     st.markdown("""
