@@ -182,17 +182,19 @@ def render_card(card, index):
     # Check if card has any displayable content (use raw values, not defaults)
     has_actual_title = content.get('title') or content.get('headline') or card.get('title')
     has_content = (
-        has_actual_title or body or question or answer_choices or
+        has_actual_title or body or question or
+        (answer_choices and len(answer_choices) > 0) or
         badge or category_label or data_source_name or
-        (stats and any(stat.get('label') or stat.get('value') for stat in stats)) or
+        (stats and len(stats) > 0 and any(stat.get('label') or stat.get('value') for stat in stats)) or
         (primary_stat and (primary_stat.get('label') or primary_stat.get('value'))) or
         (supporting_stat and (supporting_stat.get('label') or supporting_stat.get('value'))) or
-        (supporting_data and any(data.get('label') or data.get('value') for data in supporting_data)) or
-        (dashboard_metrics and any(metric.get('metric_name') or metric.get('current') for metric in dashboard_metrics)) or
+        (supporting_data and len(supporting_data) > 0 and any(data.get('label') or data.get('value') for data in supporting_data)) or
+        (dashboard_metrics and len(dashboard_metrics) > 0 and any(metric.get('metric_name') or metric.get('current') for metric in dashboard_metrics)) or
         (visual_elements and isinstance(visual_elements, dict) and visual_elements.get('chart_type')) or
-        accordion_items or summary_sections or
-        (key_takeaways and any(takeaway for takeaway in key_takeaways if takeaway)) or
-        (stats_array and any(stat.get('value') or stat.get('label') for stat in stats_array)) or
+        (accordion_items and len(accordion_items) > 0 and any(item.get('question') or item.get('answer') for item in accordion_items)) or
+        (summary_sections and len(summary_sections) > 0 and any(section.get('title') or section.get('metrics') for section in summary_sections)) or
+        (key_takeaways and len(key_takeaways) > 0 and any(takeaway for takeaway in key_takeaways if takeaway)) or
+        (stats_array and len(stats_array) > 0 and any(stat.get('value') or stat.get('label') for stat in stats_array)) or
         (interactive and interactive.get('type')) or
         primary_action or secondary_action or
         helper_text or context_label or source_label or footer or source_citation
@@ -204,13 +206,16 @@ def render_card(card, index):
 
     # Render card
     with st.container():
-        # CONTENT BOX
+        # CONTENT BOX - Start wrapper
         st.markdown('<div class="card">', unsafe_allow_html=True)
         st.markdown('<div style="border: 3px solid #333; padding: 24px; margin-bottom: 16px; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">', unsafe_allow_html=True)
+
+        # Only show header if we have content
         st.markdown('<div style="font-weight: 700; margin-bottom: 16px; color: #333; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #333; padding-bottom: 8px;">📄 Card Information</div>', unsafe_allow_html=True)
 
-        # Card type badge
-        st.markdown(f'<div class="card-type-badge">{card_type.replace("_", " ")}</div>', unsafe_allow_html=True)
+        # Card type badge - only show if not default or if there's meaningful content
+        if card_type != 'insight' or has_actual_title:
+            st.markdown(f'<div class="card-type-badge">{card_type.replace("_", " ")}</div>', unsafe_allow_html=True)
 
         # Badges
         if badge:
