@@ -210,8 +210,17 @@ def render_card(card, index):
         st.markdown('<div class="card">', unsafe_allow_html=True)
         st.markdown('<div style="border: 3px solid #333; padding: 24px; margin-bottom: 16px; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">', unsafe_allow_html=True)
 
-        # Only show header if we have content
-        st.markdown('<div style="font-weight: 700; margin-bottom: 16px; color: #333; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #333; padding-bottom: 8px;">📄 Card Information</div>', unsafe_allow_html=True)
+        # Extract last 3 digits from card_id for header
+        card_id_str = str(card.get('card_id', ''))
+        if card_id_str:
+            # Get last 3 characters (digits or otherwise)
+            card_number = card_id_str[-3:] if len(card_id_str) >= 3 else card_id_str
+            header_text = f"Card #{card_number}"
+        else:
+            header_text = "Card Information"
+
+        # Header with card number
+        st.markdown(f'<div style="font-weight: 700; margin-bottom: 16px; color: #333; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #333; padding-bottom: 8px;">📄 {header_text}</div>', unsafe_allow_html=True)
 
         # Card type badge - only show if not default or if there's meaningful content
         if card_type != 'insight' or has_actual_title:
