@@ -96,6 +96,15 @@ st.markdown("""
         font-style: italic;
         border-radius: 4px;
     }
+    .card-cta-secondary {
+        border: 1px solid var(--text-color);
+        padding: 8px 16px;
+        text-align: center;
+        font-weight: 500;
+        margin-top: 8px;
+        color: var(--text-color);
+        border-radius: 4px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -133,10 +142,11 @@ def render_card(card, index):
 
     # Get CTA (multiple formats)
     cta_primary = content.get('cta_primary', {})
+    cta_secondary = content.get('cta_secondary', {})
     cta_button = content.get('cta_button', {})
     cta_simple = card.get('cta', {})
     primary_action = content.get('primary_action') or content.get('connect_action') or cta_primary.get('label', '') or cta_button.get('label', '') or cta_simple.get('text', '')
-    secondary_action = content.get('secondary_action', '')
+    secondary_action = content.get('secondary_action') or cta_secondary.get('label', '')
 
     # Get rationale
     rationale = card.get('metadata', {}).get('rationale', '')
@@ -733,7 +743,7 @@ def render_card(card, index):
             st.markdown(f'<div class="card-cta">{primary_action}</div>', unsafe_allow_html=True)
 
         if secondary_action and str(secondary_action).strip():
-            st.markdown(f'<div style="text-align: center; margin-top: 8px; border: 1px solid #999; padding: 8px;">{secondary_action}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="card-cta-secondary">{secondary_action}</div>', unsafe_allow_html=True)
 
         # Helper text
         if helper_text or context_label:
@@ -756,7 +766,7 @@ def render_card(card, index):
         handled_fields = {
             'title', 'headline', 'body', 'badge', 'helper_text', 'context_label',
             'category_label', 'source_label', 'data_source_name', 'footer', 'source_citation',
-            'question', 'answer_choices', 'cta_primary', 'cta_button', 'cta_secondary',
+            'question', 'answer_choices', 'cta_primary', 'cta_secondary', 'cta_button',
             'primary_action', 'secondary_action', 'connect_action',
             'key_takeaways', 'stats_container', 'interactive_element',
             'accordion_items', 'summary_sections', 'visual_elements',
