@@ -166,8 +166,15 @@ def render_card(card, index):
     footer = content.get('footer', '')
 
     # Get question/answer choices (for action_prompt cards)
-    question = content.get('question', '')
-    answer_choices = content.get('answer_choices', [])
+    question_data = content.get('question', '')
+    # Handle both string and dict formats for question
+    if isinstance(question_data, dict):
+        question = question_data.get('text', '')
+        # Get answer_choices from question dict or from content directly
+        answer_choices = question_data.get('answer_choices', content.get('answer_choices', []))
+    else:
+        question = question_data
+        answer_choices = content.get('answer_choices', [])
 
     # Get supporting data
     supporting_data = content.get('supporting_data', [])
@@ -221,7 +228,9 @@ def render_card(card, index):
                 with cols[2]:
                     context = stat.get('context', '')
                     visual = stat.get('visual', '')
-                    st.caption(f"{context} {visual}")
+                    caption_text = f"{context} {visual}".strip()
+                    if caption_text:
+                        st.caption(caption_text)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Primary & Supporting stats
@@ -264,7 +273,9 @@ def render_card(card, index):
                 with cols[4]:
                     percent = metric.get('percent_change', '')
                     trend = metric.get('trend_arrow', '')
-                    st.caption(f"{percent} {trend}")
+                    caption_text = f"{percent} {trend}".strip()
+                    if caption_text:
+                        st.caption(caption_text)
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Visual elements note
@@ -324,7 +335,7 @@ def render_card(card, index):
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Interactive element
-        if interactive:
+        if interactive and interactive.get('type'):
             st.info(f"Interactive: {interactive.get('type', '')} " +
                    (f"({len(interactive.get('words', []))} options)" if 'words' in interactive else '') +
                    (f" - Select up to {interactive.get('max_selections', '')}" if 'max_selections' in interactive else ''))
