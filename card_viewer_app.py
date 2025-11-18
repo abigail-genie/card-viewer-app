@@ -179,9 +179,10 @@ def render_card(card, index):
     # Get supporting data
     supporting_data = content.get('supporting_data', [])
 
-    # Check if card has any displayable content
+    # Check if card has any displayable content (use raw values, not defaults)
+    has_actual_title = content.get('title') or content.get('headline') or card.get('title')
     has_content = (
-        title or body or question or answer_choices or
+        has_actual_title or body or question or answer_choices or
         badge or category_label or data_source_name or
         (stats and any(stat.get('label') or stat.get('value') for stat in stats)) or
         (primary_stat and (primary_stat.get('label') or primary_stat.get('value'))) or
