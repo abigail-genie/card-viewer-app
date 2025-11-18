@@ -242,13 +242,12 @@ def render_card(card, index):
             st.markdown(f'<div style="margin: 16px 0; font-weight: 600;">{question}</div>', unsafe_allow_html=True)
 
         # Answer choices (for action_prompt cards)
-        if answer_choices:
-            st.write(f"DEBUG: Found {len(answer_choices)} answer choices")  # DEBUG
+        if answer_choices and len(answer_choices) > 0:
             choices_html = '<div style="border: 1px solid #ddd; padding: 12px; margin: 12px 0;">'
             for choice in answer_choices:
                 choice_label = choice if isinstance(choice, str) else choice.get('label', '')
-                st.write(f"DEBUG: Choice label: {choice_label}")  # DEBUG
-                choices_html += f'<div style="padding: 8px; border: 1px solid #ccc; margin: 8px 0; cursor: pointer;">☐ {choice_label}</div>'
+                if choice_label:  # Only add if label exists
+                    choices_html += f'<div style="padding: 8px; border: 1px solid #ccc; margin: 8px 0; cursor: pointer;">☐ {choice_label}</div>'
             choices_html += '</div>'
             st.markdown(choices_html, unsafe_allow_html=True)
 
@@ -383,12 +382,10 @@ def render_card(card, index):
                    (f" - Select up to {interactive.get('max_selections', '')}" if 'max_selections' in interactive else ''))
 
         # CTAs
-        st.write(f"DEBUG: primary_action = '{primary_action}'")  # DEBUG
-        st.write(f"DEBUG: secondary_action = '{secondary_action}'")  # DEBUG
-        if primary_action:
+        if primary_action and str(primary_action).strip():
             st.markdown(f'<div class="card-cta">{primary_action}</div>', unsafe_allow_html=True)
 
-        if secondary_action:
+        if secondary_action and str(secondary_action).strip():
             st.markdown(f'<div style="text-align: center; margin-top: 8px; border: 1px solid #999; padding: 8px;">{secondary_action}</div>', unsafe_allow_html=True)
 
         # Helper text
@@ -522,6 +519,8 @@ if uploaded_files:
         for tab, uploaded_file in zip(tabs, uploaded_files):
             with tab:
                 try:
+                    # Reset file pointer to beginning
+                    uploaded_file.seek(0)
                     # Load JSON
                     data = json.load(uploaded_file)
 
