@@ -179,6 +179,28 @@ def render_card(card, index):
     # Get supporting data
     supporting_data = content.get('supporting_data', [])
 
+    # Check if card has any displayable content
+    has_content = (
+        title or body or question or answer_choices or
+        badge or category_label or data_source_name or
+        (stats and any(stat.get('label') or stat.get('value') for stat in stats)) or
+        (primary_stat and (primary_stat.get('label') or primary_stat.get('value'))) or
+        (supporting_stat and (supporting_stat.get('label') or supporting_stat.get('value'))) or
+        (supporting_data and any(data.get('label') or data.get('value') for data in supporting_data)) or
+        (dashboard_metrics and any(metric.get('metric_name') or metric.get('current') for metric in dashboard_metrics)) or
+        (visual_elements and isinstance(visual_elements, dict) and visual_elements.get('chart_type')) or
+        accordion_items or summary_sections or
+        (key_takeaways and any(takeaway for takeaway in key_takeaways if takeaway)) or
+        (stats_array and any(stat.get('value') or stat.get('label') for stat in stats_array)) or
+        (interactive and interactive.get('type')) or
+        primary_action or secondary_action or
+        helper_text or context_label or source_label or footer or source_citation
+    )
+
+    # Only render card if it has content
+    if not has_content:
+        return
+
     # Render card
     with st.container():
         # CONTENT BOX
