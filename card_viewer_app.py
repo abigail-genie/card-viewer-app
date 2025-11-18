@@ -191,6 +191,7 @@ def render_card(card, index):
     m3_preview = content.get('m3_preview', {})
     share_content = content.get('share_content', {})
     visualization = content.get('visualization', {})
+    data_viz = content.get('data_viz', {})
     cta = content.get('cta', {})
 
     has_content = (
@@ -218,7 +219,8 @@ def render_card(card, index):
         (achievements_unlocked and len(achievements_unlocked) > 0) or
         (m3_preview and m3_preview.get('title')) or
         (share_content and (share_content.get('pre_filled_message') or share_content.get('achievement_summary'))) or
-        (visualization and isinstance(visualization, dict) and visualization.get('type') == 'maintenance_checklist') or
+        (visualization and isinstance(visualization, dict) and visualization.get('type')) or
+        (data_viz and isinstance(data_viz, dict) and data_viz.get('type')) or
         (cta and isinstance(cta, dict) and cta.get('options'))
     )
 
@@ -497,11 +499,19 @@ def render_card(card, index):
                 if feature:
                     st.markdown(f"• {feature}")
 
-        # Maintenance checklist (from visualization)
+        # Visualization content (various types)
         visualization = content.get('visualization', {})
-        if visualization and isinstance(visualization, dict):
-            if visualization.get('type') == 'maintenance_checklist':
-                sections = visualization.get('sections', [])
+        data_viz = content.get('data_viz', {})  # Some cards use this field
+
+        # Combine both fields
+        viz_data = visualization if visualization else data_viz
+
+        if viz_data and isinstance(viz_data, dict):
+            viz_type = viz_data.get('type', '')
+
+            # Maintenance checklist
+            if viz_type == 'maintenance_checklist':
+                sections = viz_data.get('sections', [])
                 for section in sections:
                     section_title = section.get('section_title', '')
                     if section_title:
@@ -522,6 +532,77 @@ def render_card(card, index):
                             if action:
                                 display += f" - *{action}*"
                             st.markdown(display)
+
+            # Shareable card
+            elif viz_type == 'shareable_card':
+                achievement_summary = viz_data.get('achievement_summary', {})
+                if achievement_summary:
+                    if achievement_summary.get('title'):
+                        st.markdown(f"**{achievement_summary['title']}**")
+                    stats = achievement_summary.get('stats', [])
+                    for stat in stats:
+                        if stat:
+                            st.markdown(stat)
+                    tagline = achievement_summary.get('tagline', '')
+                    if tagline:
+                        st.caption(tagline)
+
+            # Charts with descriptive data
+            elif viz_type in ['line_chart', 'multi_line_chart', 'timeline_comparison', 'trend_graph']:
+                # Show chart placeholder
+                st.markdown(f"📊 **Visualization:** {viz_type}")
+
+                # Show title if present
+                if viz_data.get('title'):
+                    st.markdown(f"*{viz_data['title']}*")
+
+                # Show stats if present
+                stats = viz_data.get('stats', [])
+                if stats:
+                    for stat in stats:
+                        if isinstance(stat, dict):
+                            label = stat.get('label', '')
+                            value = stat.get('value', '')
+                            change = stat.get('change', '')
+                            status = stat.get('status', '')
+                            timeline = stat.get('timeline', [])
+
+                            if label or value:
+                                stat_text = f"**{label}**: {value}"
+                                if change:
+                                    stat_text += f" ({change})"
+                                if status:
+                                    stat_text += f" - {status}"
+                                st.markdown(stat_text)
+
+                                # Show timeline if present
+                                if timeline:
+                                    timeline_text = " → ".join([f"{t.get('date', '')}: {t.get('value', '')} ({t.get('status', '')})" for t in timeline if t])
+                                    st.caption(timeline_text)
+
+                # Show data points summary
+                data_points = viz_data.get('data_points', [])
+                if data_points:
+                    st.caption(f"Data points: {len(data_points)} entries")
+
+                # Show key insights
+                key_insights = viz_data.get('key_insights', [])
+                if key_insights:
+                    st.markdown("**Key Insights:**")
+                    for insight in key_insights:
+                        if isinstance(insight, dict):
+                            metric = insight.get('metric', '')
+                            change = insight.get('change', '')
+                            impact = insight.get('impact', '')
+                            st.markdown(f"• {metric}: {change} - *{impact}*")
+
+            # Generic visualization fallback
+            elif viz_type:
+                st.markdown(f"📊 **Visualization:** {viz_type}")
+                # Show any text fields
+                for key, value in viz_data.items():
+                    if key not in ['type', 'data_points', 'x_axis', 'y_axis', 'y_axes'] and value and isinstance(value, str):
+                        st.caption(f"{key.replace('_', ' ').title()}: {value}")
 
         # Sharing content
         share_content = content.get('share_content', {})
@@ -561,6 +642,77 @@ def render_card(card, index):
                         if option_desc:
                             st.caption(option_desc)
 
+        # CTA buttons (alternative format)
+        cta_buttons = content.get('cta_buttons', [])
+        if cta_buttons and len(cta_buttons) > 0:
+            for button in cta_buttons:
+                if isinstance(button, dict):
+                    label = button.get('label', '')
+                    if label:
+                        st.markdown(f'<div class="card-cta">{label}</div>', unsafe_allow_html=True)
+
+        # Action items (for behavior change cards)
+        action_items = content.get('action_items', [])
+        if action_items and len(action_items) > 0:
+            st.markdown("**Action Items:**")
+            for item in action_items:
+                if isinstance(item, dict):
+                    category = item.get('category', '')
+                    examples = item.get('examples', [])
+                    if category:
+                        st.markdown(f"**{category}:**")
+                    if examples:
+                        for example in examples:
+                            st.markdown(f"  - {example}")
+
+        # Quick action
+        quick_action = content.get('quick_action', {})
+        if quick_action and isinstance(quick_action, dict):
+            quick_label = quick_action.get('label', '')
+            if quick_label:
+                st.markdown(f"💡 **Quick Action:** {quick_label}")
+
+        # Tips
+        tips = content.get('tips', [])
+        if tips and len(tips) > 0:
+            st.markdown("**Tips:**")
+            for tip in tips:
+                if tip:
+                    st.markdown(f"• {tip}")
+
+        # Dashboard (from rich_format cards)
+        dashboard = content.get('dashboard', {})
+        if dashboard and isinstance(dashboard, dict):
+            dashboard_title = dashboard.get('title', '')
+            if dashboard_title:
+                st.markdown(f"**{dashboard_title}**")
+
+            dashboard_metrics = dashboard.get('metrics', [])
+            if dashboard_metrics and len(dashboard_metrics) > 0:
+                for metric in dashboard_metrics:
+                    if isinstance(metric, dict):
+                        name = metric.get('name', '')
+                        baseline = metric.get('baseline', {})
+                        current = metric.get('current', {})
+                        change = metric.get('change', {})
+                        status = metric.get('status', '')
+                        target_range = metric.get('target_range', '')
+
+                        if name:
+                            st.markdown(f"**{name}:** {status}")
+                            metric_text = f"  Baseline: {baseline.get('value', '')} {baseline.get('unit', '')} → Current: {current.get('value', '')} {current.get('unit', '')}"
+                            if change.get('percent'):
+                                metric_text += f" ({change.get('direction', '')} {change.get('percent', '')}%)"
+                            st.markdown(metric_text)
+                            if target_range:
+                                st.caption(f"  Target: {target_range}")
+
+            key_insight = dashboard.get('key_insight', {})
+            if key_insight and key_insight.get('text'):
+                st.markdown(f"*{key_insight.get('icon', '')} {key_insight.get('text', '')}*")
+                if key_insight.get('subtext'):
+                    st.caption(key_insight['subtext'])
+
         # CTAs
         if primary_action and str(primary_action).strip():
             st.markdown(f'<div class="card-cta">{primary_action}</div>', unsafe_allow_html=True)
@@ -583,6 +735,44 @@ def render_card(card, index):
 
         if source_citation:
             st.caption(f"Source: {source_citation}")
+
+        # ADDITIONAL CONTENT DEBUG - Show any fields we might have missed
+        # Define all the fields we've already handled
+        handled_fields = {
+            'title', 'headline', 'body', 'badge', 'helper_text', 'context_label',
+            'category_label', 'source_label', 'data_source_name', 'footer', 'source_citation',
+            'question', 'answer_choices', 'cta_primary', 'cta_button', 'cta_secondary',
+            'primary_action', 'secondary_action', 'connect_action',
+            'key_takeaways', 'stats_container', 'interactive_element',
+            'accordion_items', 'summary_sections', 'visual_elements',
+            'stats', 'primary_stat', 'supporting_stat', 'dashboard_metrics', 'supporting_data',
+            'experiment_steps', 'habit_tracker', 'visual', 'milestone_progress',
+            'achievements_unlocked', 'm3_preview', 'share_content', 'visualization', 'data_viz', 'cta',
+            'supported_integrations', 'source', 'cta_buttons', 'action_items', 'quick_action',
+            'tips', 'dashboard', 'visual_note', 'interpretation', 'personal_context'
+        }
+
+        # Check for any unhandled content fields
+        unhandled_content = {}
+        for key, value in content.items():
+            if key not in handled_fields and value:
+                unhandled_content[key] = value
+
+        if unhandled_content:
+            with st.expander("🔍 ADDITIONAL CONTENT (Debug)", expanded=False):
+                st.markdown("*The following content exists but may not be fully rendered:*")
+                for key, value in unhandled_content.items():
+                    st.markdown(f"**{key.replace('_', ' ').title()}:**")
+                    if isinstance(value, dict):
+                        st.json(value)
+                    elif isinstance(value, list):
+                        if value and isinstance(value[0], dict):
+                            st.json(value)
+                        else:
+                            for item in value:
+                                st.markdown(f"- {item}")
+                    else:
+                        st.markdown(f"{value}")
 
         # METADATA - COLLAPSIBLE
         with st.expander("📋 METADATA", expanded=False):
