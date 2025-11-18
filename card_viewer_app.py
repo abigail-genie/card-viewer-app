@@ -181,6 +181,18 @@ def render_card(card, index):
 
     # Check if card has any displayable content (use raw values, not defaults)
     has_actual_title = content.get('title') or content.get('headline') or card.get('title')
+
+    # Check for new UI elements
+    experiment_steps = content.get('experiment_steps', [])
+    habit_tracker = content.get('habit_tracker', [])
+    visual = content.get('visual', {})
+    milestone_progress = content.get('milestone_progress', {})
+    achievements_unlocked = content.get('achievements_unlocked', [])
+    m3_preview = content.get('m3_preview', {})
+    share_content = content.get('share_content', {})
+    visualization = content.get('visualization', {})
+    cta = content.get('cta', {})
+
     has_content = (
         has_actual_title or body or question or
         (answer_choices and len(answer_choices) > 0) or
@@ -197,7 +209,17 @@ def render_card(card, index):
         (stats_array and len(stats_array) > 0 and any(stat.get('value') or stat.get('label') for stat in stats_array)) or
         (interactive and interactive.get('type')) or
         primary_action or secondary_action or
-        helper_text or context_label or source_label or footer or source_citation
+        helper_text or context_label or source_label or footer or source_citation or
+        # New UI elements
+        (experiment_steps and len(experiment_steps) > 0) or
+        (habit_tracker and len(habit_tracker) > 0) or
+        (visual and isinstance(visual, dict) and visual.get('progress_tracker')) or
+        (milestone_progress and milestone_progress.get('next_milestone')) or
+        (achievements_unlocked and len(achievements_unlocked) > 0) or
+        (m3_preview and m3_preview.get('title')) or
+        (share_content and (share_content.get('pre_filled_message') or share_content.get('achievement_summary'))) or
+        (visualization and isinstance(visualization, dict) and visualization.get('type') == 'maintenance_checklist') or
+        (cta and isinstance(cta, dict) and cta.get('options'))
     )
 
     # Only render card if it has content
@@ -380,6 +402,164 @@ def render_card(card, index):
             st.info(f"Interactive: {interactive.get('type', '')} " +
                    (f"({len(interactive.get('words', []))} options)" if 'words' in interactive else '') +
                    (f" - Select up to {interactive.get('max_selections', '')}" if 'max_selections' in interactive else ''))
+
+        # Experiment steps
+        experiment_steps = content.get('experiment_steps', [])
+        if experiment_steps and len(experiment_steps) > 0:
+            st.markdown("**Experiment Steps:**")
+            for step in experiment_steps:
+                step_num = step.get('step', '')
+                instruction = step.get('instruction', '')
+                if instruction:
+                    st.markdown(f"{step_num}. {instruction}")
+
+        # Habit tracker
+        habit_tracker = content.get('habit_tracker', [])
+        if habit_tracker and len(habit_tracker) > 0:
+            st.markdown("**Your Habits:**")
+            for habit in habit_tracker:
+                habit_name = habit.get('habit_name', '')
+                adherence_display = habit.get('adherence_display', '')
+                adherence_percent = habit.get('adherence_percent', '')
+                streak_days = habit.get('streak_days')
+                status = habit.get('status', '')
+
+                if habit_name:
+                    habit_text = f"• **{habit_name}**: {adherence_display}"
+                    if adherence_percent:
+                        habit_text += f" ({adherence_percent}%)"
+                    if streak_days:
+                        habit_text += f" - 🔥 {streak_days} day streak"
+                    if status:
+                        habit_text += f" - *{status.replace('_', ' ')}*"
+                    st.markdown(habit_text)
+
+        # Visual progress tracker (for challenges)
+        visual = content.get('visual', {})
+        if visual and isinstance(visual, dict):
+            progress_tracker = visual.get('progress_tracker', {})
+            if progress_tracker:
+                progress_bar = progress_tracker.get('progress_bar', {})
+                if progress_bar:
+                    completed = progress_bar.get('completed', 0)
+                    total = progress_bar.get('total', 0)
+                    percentage = progress_bar.get('percentage', 0)
+                    label = progress_bar.get('label', '')
+                    st.markdown(f"**Progress: {completed}/{total} ({percentage}%)** - {label}")
+
+                nightly_progress = progress_tracker.get('nightly_progress', [])
+                if nightly_progress:
+                    st.markdown("**Nightly Progress:**")
+                    for night in nightly_progress:
+                        night_label = night.get('night', '')
+                        bedtime = night.get('bedtime', '')
+                        duration = night.get('duration', '')
+                        quality = night.get('quality', '')
+                        icon = night.get('icon', '')
+                        badge = night.get('badge', '')
+
+                        night_text = f"{icon} {night_label}: {bedtime}, {duration}, Quality: {quality}"
+                        if badge:
+                            night_text += f" **[{badge}]**"
+                        st.markdown(night_text)
+
+                key_stat = progress_tracker.get('key_stat', {})
+                if key_stat and key_stat.get('label'):
+                    st.markdown(f"*{key_stat.get('label', '')}: {key_stat.get('value', '')} - {key_stat.get('context', '')}*")
+
+        # Milestone progress
+        milestone_progress = content.get('milestone_progress', {})
+        if milestone_progress and milestone_progress.get('next_milestone'):
+            st.markdown("**Milestone Progress:**")
+            current = milestone_progress.get('current_milestone', '')
+            next_ms = milestone_progress.get('next_milestone', '')
+            progress_pct = milestone_progress.get('progress_percent', 0)
+            days_remaining = milestone_progress.get('days_remaining', 0)
+            st.markdown(f"• Current: {current} → Next: {next_ms}")
+            st.markdown(f"• Progress: {progress_pct}% ({days_remaining} days remaining)")
+
+        # Achievements unlocked
+        achievements = content.get('achievements_unlocked', [])
+        if achievements and len(achievements) > 0:
+            st.markdown("**Achievements Unlocked:**")
+            for achievement in achievements:
+                achievement_text = achievement.get('achievement', '')
+                icon = achievement.get('icon', '🏆')
+                if achievement_text:
+                    st.markdown(f"{icon} {achievement_text}")
+
+        # Milestone preview
+        m3_preview = content.get('m3_preview', {})
+        if m3_preview and m3_preview.get('title'):
+            st.markdown(f"**{m3_preview.get('title', '')}:**")
+            features = m3_preview.get('features', [])
+            for feature in features:
+                if feature:
+                    st.markdown(f"• {feature}")
+
+        # Maintenance checklist (from visualization)
+        visualization = content.get('visualization', {})
+        if visualization and isinstance(visualization, dict):
+            if visualization.get('type') == 'maintenance_checklist':
+                sections = visualization.get('sections', [])
+                for section in sections:
+                    section_title = section.get('section_title', '')
+                    if section_title:
+                        st.markdown(f"**{section_title}:**")
+                    items = section.get('items', [])
+                    for item in items:
+                        item_text = item.get('item', '')
+                        frequency = item.get('frequency', '')
+                        action = item.get('action', '')
+                        current_adherence = item.get('current_adherence', '')
+
+                        if item_text:
+                            display = f"• {item_text}"
+                            if frequency:
+                                display += f" ({frequency})"
+                            if current_adherence:
+                                display += f" - {current_adherence}"
+                            if action:
+                                display += f" - *{action}*"
+                            st.markdown(display)
+
+        # Sharing content
+        share_content = content.get('share_content', {})
+        if share_content:
+            pre_filled = share_content.get('pre_filled_message', '')
+            if pre_filled:
+                st.markdown("**Shareable Message:**")
+                st.markdown(f'<div style="border: 1px solid #ddd; padding: 12px; background: #f9f9f9; font-style: italic;">{pre_filled}</div>', unsafe_allow_html=True)
+
+            visual_asset = share_content.get('visual_asset', {})
+            if visual_asset and visual_asset.get('type'):
+                st.caption(f"📊 Shareable visual: {visual_asset.get('type', '')} - {visual_asset.get('title', '')}")
+
+            achievement_summary = share_content.get('achievement_summary', {})
+            if achievement_summary:
+                if achievement_summary.get('title'):
+                    st.markdown(f"**{achievement_summary.get('title')}**")
+                stats = achievement_summary.get('stats', [])
+                for stat in stats:
+                    if stat:
+                        st.markdown(stat)
+                tagline = achievement_summary.get('tagline', '')
+                if tagline:
+                    st.caption(tagline)
+
+        # CTA with options (for multi-choice actions)
+        cta = content.get('cta', {})
+        if cta and isinstance(cta, dict):
+            options = cta.get('options', [])
+            if options and len(options) > 0:
+                st.markdown("**Choose your focus:**")
+                for option in options:
+                    option_label = option.get('label', '')
+                    option_desc = option.get('description', '')
+                    if option_label:
+                        st.markdown(f"**{option_label}**")
+                        if option_desc:
+                            st.caption(option_desc)
 
         # CTAs
         if primary_action and str(primary_action).strip():
