@@ -653,9 +653,10 @@ def render_card(card, index):
                 if tagline:
                     st.caption(tagline)
 
-        # CTA with options (for multi-choice actions)
+        # CTA with options or primary/secondary buttons
         cta = content.get('cta', {})
         if cta and isinstance(cta, dict):
+            # Handle options array (for multi-choice actions)
             options = cta.get('options', [])
             if options and len(options) > 0:
                 st.markdown("**Choose your focus:**")
@@ -666,6 +667,20 @@ def render_card(card, index):
                         st.markdown(f"**{option_label}**")
                         if option_desc:
                             st.caption(option_desc)
+
+            # Handle primary/secondary button structure
+            cta_primary_obj = cta.get('primary', {})
+            cta_secondary_obj = cta.get('secondary', {})
+
+            if cta_primary_obj and isinstance(cta_primary_obj, dict):
+                primary_label = cta_primary_obj.get('label', '')
+                if primary_label:
+                    st.markdown(f'<div class="card-cta">{primary_label}</div>', unsafe_allow_html=True)
+
+            if cta_secondary_obj and isinstance(cta_secondary_obj, dict):
+                secondary_label = cta_secondary_obj.get('label', '')
+                if secondary_label:
+                    st.markdown(f'<div class="card-cta-secondary">{secondary_label}</div>', unsafe_allow_html=True)
 
         # CTA buttons (alternative format)
         cta_buttons = content.get('cta_buttons', [])
