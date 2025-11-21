@@ -269,12 +269,38 @@ def render_card(card, index):
             st.markdown(f'<span class="metadata-tag">{category_label}</span>', unsafe_allow_html=True)
 
         if data_source_name:
-            st.markdown(f'<div style="border: 1px solid #ddd; padding: 8px 12px; display: inline-flex; align-items: center; gap: 8px; margin: 12px 0;"><span>⌚</span><span style="font-size: 0.9em;">{data_source_name}</span></div>', unsafe_allow_html=True)
+            data_source_icon = content.get('data_source_icon', '⌚')
+            st.markdown(f'<div style="border: 1px solid #ddd; padding: 8px 12px; display: inline-flex; align-items: center; gap: 8px; margin: 12px 0;"><span>{data_source_icon}</span><span style="font-size: 0.9em;">{data_source_name}</span></div>', unsafe_allow_html=True)
+
+        # Supported integrations (for connected_data cards)
+        supported_integrations = content.get('supported_integrations', [])
+        if supported_integrations:
+            integrations_text = ", ".join(supported_integrations)
+            st.caption(f"Supported: {integrations_text}")
+
+        # Upload content (for upload cards)
+        upload_methods = content.get('upload_methods', [])
+        accepted_formats = content.get('accepted_formats', '')
+        if upload_methods:
+            st.markdown("**Upload Options:**")
+            for method in upload_methods:
+                method_display = method.replace('_', ' ').title()
+                st.markdown(f"• {method_display}")
+            if accepted_formats:
+                st.caption(f"Accepted formats: {accepted_formats}")
 
         # Title and body
         st.markdown(f'<div class="card-title">{title}</div>', unsafe_allow_html=True)
         if body:
             st.markdown(f'<div class="card-body">{body}</div>', unsafe_allow_html=True)
+
+        # Image
+        image = content.get('image', '')
+        if image:
+            try:
+                st.image(image, use_container_width=True)
+            except:
+                st.markdown(f'<div style="border: 1px solid #ddd; padding: 20px; text-align: center; margin: 12px 0;">🖼️ Image: {image}</div>', unsafe_allow_html=True)
 
         # Question (for action_prompt cards)
         if question:
@@ -416,9 +442,85 @@ def render_card(card, index):
 
         # Interactive element
         if interactive and interactive.get('type'):
-            st.info(f"Interactive: {interactive.get('type', '')} " +
-                   (f"({len(interactive.get('words', []))} options)" if 'words' in interactive else '') +
-                   (f" - Select up to {interactive.get('max_selections', '')}" if 'max_selections' in interactive else ''))
+            interactive_type = interactive.get('type', '')
+
+            if interactive_type == 'slider':
+                min_val = interactive.get('min_value', 0)
+                max_val = interactive.get('max_value', 10)
+                min_label = interactive.get('min_label', str(min_val))
+                max_label = interactive.get('max_label', str(max_val))
+
+                st.markdown("**Rate your response:**")
+                cols = st.columns([1, 6, 1])
+                with cols[0]:
+                    st.caption(min_label)
+                with cols[1]:
+                    st.slider("", min_value=min_val, max_value=max_val, value=(min_val + max_val) // 2, key=f"slider_{index}")
+                with cols[2]:
+                    st.caption(max_label)
+
+            elif interactive_type == 'mcq':
+                options = interactive.get('options', [])
+                if options:
+                    st.markdown("**Select an option:**")
+                    for i, option in enumerate(options):
+                        option_text = option if isinstance(option, str) else option.get('label', '')
+                        if option_text:
+                            st.markdown(f'<div style="padding: 8px; border: 1px solid #ccc; margin: 4px 0; cursor: pointer;">○ {option_text}</div>', unsafe_allow_html=True)
+
+            elif interactive_type == 'word_cloud':
+                options = interactive.get('options', interactive.get('words', []))
+                max_selections = interactive.get('max_selections', 3)
+                if options:
+                    st.markdown(f"**Select up to {max_selections}:**")
+                    # Display as selectable tags
+                    tags_html = '<div style="display: flex; flex-wrap: wrap; gap: 8px;">'
+                    for option in options:
+                        option_text = option if isinstance(option, str) else option.get('label', '')
+                        if option_text:
+                            tags_html += f'<span style="padding: 6px 12px; border: 1px solid #666; border-radius: 16px; cursor: pointer; font-size: 0.9em;">{option_text}</span>'
+                    tags_html += '</div>'
+                    st.markdown(tags_html, unsafe_allow_html=True)
+            else:
+                # Fallback for unknown types
+                st.info(f"Interactive: {interactive_type} " +
+                       (f"({len(interactive.get('words', []))} options)" if 'words' in interactive else '') +
+                       (f" - Select up to {interactive.get('max_selections', '')}" if 'max_selections' in interactive else ''))
+
+        # Stepper (progress tracking)
+        stepper = content.get('stepper', {})
+        if stepper and isinstance(stepper, dict):
+            current_step = stepper.get('current_step', 1)
+            total_steps = stepper.get('total_steps', 0)
+            steps = stepper.get('steps', [])
+
+            if steps:
+                st.markdown("**Progress:**")
+                # Create a visual stepper
+                step_cols = st.columns(len(steps))
+                for i, step in enumerate(steps):
+                    step_label = step.get('label', f'Step {i+1}')
+                    step_status = step.get('status', 'upcoming')
+                    step_badge = step.get('badge', '')
+
+                    with step_cols[i]:
+                        # Status indicator
+                        if step_status == 'completed':
+                            icon = '✓'
+                            style = 'color: green; font-weight: bold;'
+                        elif step_status == 'current':
+                            icon = '●'
+                            style = 'color: blue; font-weight: bold;'
+                        else:
+                            icon = '○'
+                            style = 'color: gray;'
+
+                        st.markdown(f'<div style="text-align: center; {style}">{icon}</div>', unsafe_allow_html=True)
+                        st.markdown(f'<div style="text-align: center; font-size: 0.8em;">{step_label}</div>', unsafe_allow_html=True)
+                        if step_badge:
+                            st.markdown(f'<div style="text-align: center; font-size: 0.7em; color: gray;">{step_badge}</div>', unsafe_allow_html=True)
+            elif total_steps:
+                st.markdown(f"**Progress:** Step {current_step} of {total_steps}")
 
         # Experiment steps
         experiment_steps = content.get('experiment_steps', [])
@@ -562,6 +664,40 @@ def render_card(card, index):
                     if tagline:
                         st.caption(tagline)
 
+            # Gauge visualization
+            elif viz_type == 'gauge':
+                st.markdown(f"📊 **Gauge Visualization**")
+                if viz_data.get('title'):
+                    st.markdown(f"*{viz_data['title']}*")
+
+                # Show gauge data points
+                data_points = viz_data.get('data_points', [])
+                for dp in data_points:
+                    label = dp.get('label', '')
+                    value = dp.get('value', '')
+                    if label or value:
+                        # Create a simple gauge representation
+                        st.markdown(f"**{label}:** {value}")
+
+                # Show x/y axis labels if present
+                if viz_data.get('x_axis_label'):
+                    st.caption(f"X-axis: {viz_data['x_axis_label']}")
+                if viz_data.get('y_axis_label'):
+                    st.caption(f"Y-axis: {viz_data['y_axis_label']}")
+
+            # Bar chart
+            elif viz_type == 'bar_chart':
+                st.markdown(f"📊 **Bar Chart**")
+                if viz_data.get('title'):
+                    st.markdown(f"*{viz_data['title']}*")
+
+                data_points = viz_data.get('data_points', [])
+                for dp in data_points:
+                    label = dp.get('label', '')
+                    value = dp.get('value', '')
+                    if label or value:
+                        st.markdown(f"• {label}: {value}")
+
             # Charts with descriptive data
             elif viz_type in ['line_chart', 'multi_line_chart', 'timeline_comparison', 'trend_graph']:
                 # Show chart placeholder
@@ -622,10 +758,31 @@ def render_card(card, index):
         # Sharing content
         share_content = content.get('share_content', {})
         if share_content:
+            # Recipient type
+            recipient_type = share_content.get('recipient_type', '')
+            if recipient_type:
+                st.markdown(f"**Share with:** {recipient_type.replace('_', ' ').title()}")
+
+            # Content summary
+            content_summary = share_content.get('content_summary', '')
+            if content_summary:
+                st.markdown(f"*{content_summary}*")
+
+            # Share methods
+            share_methods = share_content.get('share_methods', [])
+            if share_methods:
+                methods_display = ", ".join([m.replace('_', ' ').title() for m in share_methods])
+                st.caption(f"Share via: {methods_display}")
+
             pre_filled = share_content.get('pre_filled_message', '')
             if pre_filled:
                 st.markdown("**Shareable Message:**")
                 st.markdown(f'<div class="share-message">{pre_filled}</div>', unsafe_allow_html=True)
+
+            # Privacy note
+            privacy_note = share_content.get('privacy_note', '')
+            if privacy_note:
+                st.caption(f"🔒 {privacy_note}")
 
             visual_asset = share_content.get('visual_asset', {})
             if visual_asset and visual_asset.get('type'):
@@ -755,7 +912,7 @@ def render_card(card, index):
         # Define all the fields we've already handled
         handled_fields = {
             'title', 'headline', 'body', 'badge', 'helper_text', 'context_label',
-            'category_label', 'source_label', 'data_source_name', 'footer', 'source_citation',
+            'category_label', 'source_label', 'data_source_name', 'data_source_icon', 'footer', 'source_citation',
             'question', 'answer_choices', 'cta_primary', 'cta_button', 'cta_secondary',
             'primary_action', 'secondary_action', 'connect_action',
             'key_takeaways', 'stats_container', 'interactive_element',
@@ -764,7 +921,8 @@ def render_card(card, index):
             'experiment_steps', 'habit_tracker', 'visual', 'milestone_progress',
             'achievements_unlocked', 'm3_preview', 'share_content', 'visualization', 'data_viz', 'cta',
             'supported_integrations', 'source', 'cta_buttons', 'action_items', 'quick_action',
-            'tips', 'dashboard', 'visual_note', 'interpretation', 'personal_context'
+            'tips', 'dashboard', 'visual_note', 'interpretation', 'personal_context',
+            'image', 'upload_methods', 'accepted_formats', 'stepper'
         }
 
         # Check for any unhandled content fields
