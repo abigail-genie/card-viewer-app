@@ -114,12 +114,13 @@ def export_feedback_to_csv():
     """Export all feedback to CSV format"""
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(['Card ID', 'Feedback (Thumbs)', 'Comment', 'Timestamp'])
+    writer.writerow(['File Name', 'Card ID', 'Feedback (Thumbs)', 'Comment', 'Timestamp'])
 
     for card_key, feedback in st.session_state.card_feedback.items():
         if feedback.get('thumbs') or feedback.get('comment'):
             writer.writerow([
-                card_key,
+                feedback.get('file_name', ''),
+                feedback.get('card_id', card_key),
                 feedback.get('thumbs', ''),
                 feedback.get('comment', ''),
                 feedback.get('timestamp', '')
@@ -145,6 +146,7 @@ with st.expander("📋 Instructions - How to Use Feedback Feature", expanded=Fal
     ### Export Format
 
     The exported CSV file will contain:
+    - **File Name**: Name of the JSON file containing the card
     - **Card ID**: Unique identifier for the card
     - **Feedback (Thumbs)**: "up" or "down"
     - **Comment**: Your written feedback
@@ -184,7 +186,7 @@ uploaded_files = st.file_uploader(
     help="Upload JSON files containing generated health coach cards"
 )
 
-def render_card(card, index, file_key=""):
+def render_card(card, index, file_key="", file_name=""):
     """Render a single card with all its components"""
 
     # Get card metadata
@@ -1092,7 +1094,13 @@ def render_card(card, index, file_key=""):
 
         # Initialize feedback for this card if not exists
         if unique_key not in st.session_state.card_feedback:
-            st.session_state.card_feedback[unique_key] = {'thumbs': None, 'comment': '', 'timestamp': ''}
+            st.session_state.card_feedback[unique_key] = {
+                'thumbs': None,
+                'comment': '',
+                'timestamp': '',
+                'file_name': file_name,
+                'card_id': card_id or f"card_{index}"
+            }
 
         # Thumbs up/down buttons
         col1, col2, col3 = st.columns([1, 1, 4])
@@ -1170,7 +1178,7 @@ if uploaded_files:
 
                 # Display cards
                 for idx, card in enumerate(cards):
-                    render_card(card, idx, "single")
+                    render_card(card, idx, "single", uploaded_files[0].name)
 
         except json.JSONDecodeError:
             st.error("Invalid JSON file. Please upload a valid JSON file.")
@@ -1240,7 +1248,7 @@ if uploaded_files:
 
                         # Display cards
                         for idx, card in enumerate(cards):
-                            render_card(card, idx, f"file{tab_idx}")
+                            render_card(card, idx, f"file{tab_idx}", file_info['name'])
 
                 except json.JSONDecodeError:
                     st.error(f"Invalid JSON in {file_info['name']}. Please upload a valid JSON file.")
