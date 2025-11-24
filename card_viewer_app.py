@@ -1,5 +1,7 @@
 import streamlit as st
 import json
+import csv
+import io
 from datetime import datetime
 
 # Page config
@@ -99,9 +101,80 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Initialize session state for feedback
+if 'card_feedback' not in st.session_state:
+    st.session_state.card_feedback = {}  # {card_id: {'thumbs': 'up'/'down'/None, 'comment': ''}}
+
+def get_card_key(card, index):
+    """Generate a unique key for a card based on its ID or index"""
+    card_id = card.get('card_id', '')
+    return f"{card_id}_{index}" if card_id else f"card_{index}"
+
+def export_feedback_to_csv():
+    """Export all feedback to CSV format"""
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(['Card ID', 'Feedback (Thumbs)', 'Comment', 'Timestamp'])
+
+    for card_key, feedback in st.session_state.card_feedback.items():
+        if feedback.get('thumbs') or feedback.get('comment'):
+            writer.writerow([
+                card_key,
+                feedback.get('thumbs', ''),
+                feedback.get('comment', ''),
+                feedback.get('timestamp', '')
+            ])
+
+    return output.getvalue()
+
 # Header
 st.markdown("# 🏥 Health Coach Card Viewer")
 st.markdown("**Interactive demo of personalized health coaching cards**")
+
+# Instructions expander
+with st.expander("📋 Instructions - How to Use Feedback Feature", expanded=False):
+    st.markdown("""
+    ### Providing Feedback on Cards
+
+    Each card has a feedback section at the bottom where you can:
+
+    1. **Thumbs Up/Down**: Click 👍 if the card is helpful or 👎 if it needs improvement
+    2. **Comments**: Add detailed comments about the card in the text area
+    3. **Export**: Once you've reviewed all cards, click the "Export Feedback to CSV" button to download your feedback
+
+    ### Export Format
+
+    The exported CSV file will contain:
+    - **Card ID**: Unique identifier for the card
+    - **Feedback (Thumbs)**: "up" or "down"
+    - **Comment**: Your written feedback
+    - **Timestamp**: When the feedback was provided
+
+    ### Tips
+
+    - You can update your feedback at any time before exporting
+    - Comments are saved automatically as you type
+    - The export will only include cards where you've provided feedback
+    """)
+
+# Export button in sidebar
+with st.sidebar:
+    st.markdown("### Export Feedback")
+    if st.button("📥 Export Feedback to CSV", help="Download all feedback as a CSV file"):
+        csv_data = export_feedback_to_csv()
+        if csv_data.strip() and len(csv_data.split('\n')) > 1:
+            st.download_button(
+                label="⬇️ Download CSV",
+                data=csv_data,
+                file_name=f"card_feedback_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                mime="text/csv"
+            )
+        else:
+            st.warning("No feedback to export yet. Please review some cards first.")
+
+    # Show feedback count
+    feedback_count = sum(1 for f in st.session_state.card_feedback.values() if f.get('thumbs') or f.get('comment'))
+    st.caption(f"Cards with feedback: {feedback_count}")
 
 # File uploader - accept up to 10 files
 uploaded_files = st.file_uploader(
@@ -1008,6 +1081,48 @@ def render_card(card, index):
                 for key, value in metadata.items():
                     if key not in ['rationale', 'scheduler_priority', 'mock_engagement', 'curiosity_hook', 'data_sources_used', 'dyk_source']:
                         st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
+
+        # FEEDBACK SECTION
+        st.markdown("---")
+        st.markdown("**📝 Feedback**")
+
+        card_key = get_card_key(card, index)
+
+        # Initialize feedback for this card if not exists
+        if card_key not in st.session_state.card_feedback:
+            st.session_state.card_feedback[card_key] = {'thumbs': None, 'comment': '', 'timestamp': ''}
+
+        # Thumbs up/down buttons
+        col1, col2, col3 = st.columns([1, 1, 4])
+
+        with col1:
+            if st.button("👍", key=f"thumbs_up_{card_key}", help="This card is helpful"):
+                st.session_state.card_feedback[card_key]['thumbs'] = 'up'
+                st.session_state.card_feedback[card_key]['timestamp'] = datetime.now().isoformat()
+
+        with col2:
+            if st.button("👎", key=f"thumbs_down_{card_key}", help="This card needs improvement"):
+                st.session_state.card_feedback[card_key]['thumbs'] = 'down'
+                st.session_state.card_feedback[card_key]['timestamp'] = datetime.now().isoformat()
+
+        with col3:
+            current_thumbs = st.session_state.card_feedback[card_key].get('thumbs')
+            if current_thumbs:
+                st.caption(f"Current: {'👍' if current_thumbs == 'up' else '👎'}")
+
+        # Comment text area
+        comment = st.text_area(
+            "Comments",
+            value=st.session_state.card_feedback[card_key].get('comment', ''),
+            key=f"comment_{card_key}",
+            placeholder="Add your comments about this card...",
+            height=100
+        )
+
+        # Update comment in session state
+        if comment != st.session_state.card_feedback[card_key].get('comment', ''):
+            st.session_state.card_feedback[card_key]['comment'] = comment
+            st.session_state.card_feedback[card_key]['timestamp'] = datetime.now().isoformat()
 
         # Add spacing between cards
         st.markdown("---")
