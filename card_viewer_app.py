@@ -184,12 +184,16 @@ uploaded_files = st.file_uploader(
     help="Upload JSON files containing generated health coach cards"
 )
 
-def render_card(card, index):
+def render_card(card, index, file_key=""):
     """Render a single card with all its components"""
 
     # Get card metadata
     card_type = card.get('card_type', card.get('type', 'insight'))
     type_class = card_type.lower().replace(' ', '-').replace('_', '-')
+
+    # Generate unique key for this card across all files
+    card_id = card.get('card_id', '')
+    unique_key = f"{file_key}_{card_id}_{index}" if card_id else f"{file_key}_card_{index}"
 
     # Get content (nested or direct)
     content = card.get('content', {})
@@ -528,7 +532,7 @@ def render_card(card, index):
                 with cols[0]:
                     st.caption(min_label)
                 with cols[1]:
-                    st.slider("", min_value=min_val, max_value=max_val, value=(min_val + max_val) // 2, key=f"slider_{index}")
+                    st.slider("", min_value=min_val, max_value=max_val, value=(min_val + max_val) // 2, key=f"slider_{unique_key}")
                 with cols[2]:
                     st.caption(max_label)
 
@@ -1086,43 +1090,41 @@ def render_card(card, index):
         st.markdown("---")
         st.markdown("**📝 Feedback**")
 
-        card_key = get_card_key(card, index)
-
         # Initialize feedback for this card if not exists
-        if card_key not in st.session_state.card_feedback:
-            st.session_state.card_feedback[card_key] = {'thumbs': None, 'comment': '', 'timestamp': ''}
+        if unique_key not in st.session_state.card_feedback:
+            st.session_state.card_feedback[unique_key] = {'thumbs': None, 'comment': '', 'timestamp': ''}
 
         # Thumbs up/down buttons
         col1, col2, col3 = st.columns([1, 1, 4])
 
         with col1:
-            if st.button("👍", key=f"thumbs_up_{card_key}", help="This card is helpful"):
-                st.session_state.card_feedback[card_key]['thumbs'] = 'up'
-                st.session_state.card_feedback[card_key]['timestamp'] = datetime.now().isoformat()
+            if st.button("👍", key=f"thumbs_up_{unique_key}", help="This card is helpful"):
+                st.session_state.card_feedback[unique_key]['thumbs'] = 'up'
+                st.session_state.card_feedback[unique_key]['timestamp'] = datetime.now().isoformat()
 
         with col2:
-            if st.button("👎", key=f"thumbs_down_{card_key}", help="This card needs improvement"):
-                st.session_state.card_feedback[card_key]['thumbs'] = 'down'
-                st.session_state.card_feedback[card_key]['timestamp'] = datetime.now().isoformat()
+            if st.button("👎", key=f"thumbs_down_{unique_key}", help="This card needs improvement"):
+                st.session_state.card_feedback[unique_key]['thumbs'] = 'down'
+                st.session_state.card_feedback[unique_key]['timestamp'] = datetime.now().isoformat()
 
         with col3:
-            current_thumbs = st.session_state.card_feedback[card_key].get('thumbs')
+            current_thumbs = st.session_state.card_feedback[unique_key].get('thumbs')
             if current_thumbs:
                 st.caption(f"Current: {'👍' if current_thumbs == 'up' else '👎'}")
 
         # Comment text area
         comment = st.text_area(
             "Comments",
-            value=st.session_state.card_feedback[card_key].get('comment', ''),
-            key=f"comment_{card_key}",
+            value=st.session_state.card_feedback[unique_key].get('comment', ''),
+            key=f"comment_{unique_key}",
             placeholder="Add your comments about this card...",
             height=100
         )
 
         # Update comment in session state
-        if comment != st.session_state.card_feedback[card_key].get('comment', ''):
-            st.session_state.card_feedback[card_key]['comment'] = comment
-            st.session_state.card_feedback[card_key]['timestamp'] = datetime.now().isoformat()
+        if comment != st.session_state.card_feedback[unique_key].get('comment', ''):
+            st.session_state.card_feedback[unique_key]['comment'] = comment
+            st.session_state.card_feedback[unique_key]['timestamp'] = datetime.now().isoformat()
 
         # Add spacing between cards
         st.markdown("---")
@@ -1168,7 +1170,7 @@ if uploaded_files:
 
                 # Display cards
                 for idx, card in enumerate(cards):
-                    render_card(card, idx)
+                    render_card(card, idx, "single")
 
         except json.JSONDecodeError:
             st.error("Invalid JSON file. Please upload a valid JSON file.")
@@ -1199,7 +1201,7 @@ if uploaded_files:
         tabs = st.tabs(tab_names)
 
         # Display each file in its tab
-        for tab, file_info in zip(tabs, all_file_data):
+        for tab_idx, (tab, file_info) in enumerate(zip(tabs, all_file_data)):
             with tab:
                 if not file_info['success']:
                     st.error(f"Error loading {file_info['name']}: {file_info['error']}")
@@ -1238,7 +1240,7 @@ if uploaded_files:
 
                         # Display cards
                         for idx, card in enumerate(cards):
-                            render_card(card, idx)
+                            render_card(card, idx, f"file{tab_idx}")
 
                 except json.JSONDecodeError:
                     st.error(f"Invalid JSON in {file_info['name']}. Please upload a valid JSON file.")
